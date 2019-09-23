@@ -8,6 +8,13 @@
   <ion-item *ngIf="orders != undefined && orders.length == 0">
     No hay órdenes de compra en el momento.
   </ion-item>
+  <ion-grid>
+      <ion-row>
+          <ion-col>
+              <button (click)="filterData()"> <ion-icon name="funnel"></ion-icon></button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
   <ion-list>
     <ion-item-sliding *ngFor="let order of orders">
       <ion-item>
