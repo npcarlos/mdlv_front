@@ -18,7 +18,12 @@ const routes: Routes = [
   {
     path: 'order-list', 
     loadChildren: './pages/order/order-list/order-list.module#OrderListPageModule' 
+  },
+  { 
+    path: 'order-details', 
+    loadChildren: './pages/order/order-details/order-details.module#OrderDetailsPageModule' 
   }
+
 
 ];
 

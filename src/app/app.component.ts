@@ -23,9 +23,15 @@ export class AppComponent {
     },
     {
       title: 'Otro',
-      url: '/list',
+      url: '/order-list',
       icon: 'list'
+    },
+    {
+      title: 'Order details',
+      url: '/order-details',
+      icon: 'cart'
     }
+    
   ];
 
   constructor(

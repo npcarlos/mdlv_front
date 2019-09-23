@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de la Orden</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>
+        <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
+
+        <h2>Cliente {{currentOrder.customer.name}}</h2>
+        <h4>Fecha </h4>
+        <p>
+          <ion-icon name="pin" class="address"></ion-icon> {{currentOrder.customer.address}}
+        </p>
+        <p>
+          <ion-icon name="call" class="phone"></ion-icon>{{currentOrder.customer.phone}}
+        </p>
+        <p>
+          <ion-icon name="calendar" class="calendar"></ion-icon> 01/01/2019
+        </p>
+        <p>
+          <ion-icon name="car" class="delivery_date"></ion-icon> 01/01/2019
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!--ion-card>
+  <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
+  <ion-card-header>
+    <ion-card-title>Cliente</ion-card-title>
+    <ion-card-subtitle>01/01/2019</ion-card-subtitle>
+    <p><ion-icon name="pin" class="address"></ion-icon> Calle 1 # 1 - 1 </p>
+    <p><ion-icon name="call" class="phone"></ion-icon>1234567</p>
+    <p><ion-icon name="calendar" class="calendar"></ion-icon> 01/01/2019</p>
+    <p><ion-icon name="car" class="delivery_date"></ion-icon> 01/01/2019</p>
+  </ion-card-header>
+  <ion-card-content>
+    
+  </ion-card-content>
+</ion-card-->
+  <h2>Productos </h2>
+  <ion-card >
+    <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Miel</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Cantidad: 000</p>
+      <p>Valor unitario: $ 000.000</p>
+      <p>Subtotal: $ 000.000</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Miel</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Cantidad: 000</p>
+      <p>Valor unitario: $ 000.000</p>
+      <p>Subtotal: $ 000.000</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
