@@ -44,12 +44,17 @@ export class AppComponent {
     {
       title: 'Insumos',
       url: '/',
-      icon: 'contacts'
+      icon: 'nutrition'
     },
     {
       title: 'Domicilios',
       url: '/',
       icon: 'car'
+    },
+    {
+      title: 'Estadísticas',
+      url: '/',
+      icon: 'stats'
     }
     
   ];
