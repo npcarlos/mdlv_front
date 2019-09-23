@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mieles de La Villa</string>
+    <string name="title_activity_main">mdlv</string>
+    <string name="package_name">com.mdlv.mdlv</string>
+    <string name="fileprovider_authority">com.mdlv.mdlv.fileprovider</string>
+    <string name="custom_url_scheme">com.mdlv.mdlv</string>
+</resources>
