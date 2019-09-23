@@ -22,7 +22,12 @@ const routes: Routes = [
   { 
     path: 'order-details', 
     loadChildren: './pages/order/order-details/order-details.module#OrderDetailsPageModule' 
+  },
+  { 
+    path: 'order-new', 
+    loadChildren: './pages/order/order-new/order-new.module#OrderNewPageModule' 
   }
+
 
 
 ];
