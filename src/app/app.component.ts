@@ -22,14 +22,34 @@ export class AppComponent {
       icon: 'list'
     },
     {
-      title: 'Otro',
-      url: '/order-list',
-      icon: 'list'
-    },
-    {
       title: 'Order details',
       url: '/order-details',
       icon: 'cart'
+    },
+    {
+      title: 'Empaque',
+      url: '/',
+      icon: 'filing'
+    },
+    {
+      title: 'Pedidos',
+      url: '/order-list',
+      icon: 'cart'
+    },
+    {
+      title: 'Clientes',
+      url: '/',
+      icon: 'contacts'
+    },
+    {
+      title: 'Insumos',
+      url: '/',
+      icon: 'contacts'
+    },
+    {
+      title: 'Domicilios',
+      url: '/',
+      icon: 'car'
     }
     
   ];
