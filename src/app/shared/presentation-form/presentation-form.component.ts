@@ -75,7 +75,7 @@ export class PresentationFormComponent implements OnInit {
               presentations.push(element);
             }
             this.pedidos.push({ presentations: presentations });
-      
+          }
   }
   
   getPresentationRequest()
