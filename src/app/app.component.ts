@@ -55,6 +55,11 @@ export class AppComponent {
       title: 'Estadísticas',
       url: '/',
       icon: 'stats'
+    },
+    {
+      title: 'Usuarios',
+      url: '/',
+      icon: 'people'
     }
     
   ];
