@@ -31,7 +31,6 @@ const routes: Routes = [
   { path: 'prelot-request-new', loadChildren: './pages/prelot-request/prelot-request-new/prelot-request-new.module#PrelotRequestNewPageModule' }
 
 
-
 ];
 
 @NgModule({
