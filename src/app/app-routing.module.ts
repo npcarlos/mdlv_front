@@ -27,8 +27,14 @@ const routes: Routes = [
     path: 'order-new', 
     loadChildren: './pages/order/order-new/order-new.module#OrderNewPageModule' 
   },
-  { path: 'prelot-request-list', loadChildren: './pages/prelot-request/prelot-request-list/prelot-request-list.module#PrelotRequestListPageModule' },
-  { path: 'prelot-request-new', loadChildren: './pages/prelot-request/prelot-request-new/prelot-request-new.module#PrelotRequestNewPageModule' }
+  {
+    path: 'prelot-request-list', 
+    loadChildren: './pages/prelot-request/prelot-request-list/prelot-request-list.module#PrelotRequestListPageModule' 
+  },
+  { 
+    path: 'prelot-request-new', 
+    loadChildren: './pages/prelot-request/prelot-request-new/prelot-request-new.module#PrelotRequestNewPageModule' 
+  }
 
 
 ];
