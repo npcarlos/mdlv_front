@@ -28,7 +28,7 @@ export class AppComponent {
     },
     {
       title: 'Empaque',
-      url: '/',
+      url: '/prelot-request-list',
       icon: 'filing'
     },
     {
