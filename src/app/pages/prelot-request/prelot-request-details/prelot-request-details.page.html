@@ -7,14 +7,34 @@
 <ion-content>
 
     <ion-card>
-        <img src="assets/images/propolis.png" />
+        <img src="assets/images/propolis2.png" />
         <ion-card-header>
-          <ion-card-subtitle>Propóleo</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
+          <ion-card-subtitle>EMPAQUE</ion-card-subtitle>
+          <ion-card-title>Propóleo (250 ml)</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
+            El própolis o propóleo es una sustancia elaborada por las abejas a partir de productos de origen vegetal para proteger sus colmenas, que actúa como antiséptico, antiviral y antiinflamatorio.
+            <br>
+            <br>
+            <b>Cantidad disponible: 25</b>
+          </ion-card-content>
+        
+        <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-button expand="full" color="tertiary" (click)="crearEmpaque()">
+                  <ion-icon name="create"></ion-icon>
+                  Editar
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button expand="full" color="danger" href="prelot-request-list" routerDirection="back">
+                  <ion-icon name="trash"></ion-icon>
+                  Eliminar 
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
       </ion-card>
 
 </ion-content>
