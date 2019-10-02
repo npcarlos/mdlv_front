@@ -35,8 +35,10 @@ const routes: Routes = [
     path: 'prelot-request-new', 
     loadChildren: './pages/prelot-request/prelot-request-new/prelot-request-new.module#PrelotRequestNewPageModule' 
   },
-  { path: 'prelot-request-detalis', loadChildren: './pages/prelot-request/prelot-request-detalis/prelot-request-detalis.module#PrelotRequestDetalisPageModule' },
-  { path: 'prelot-request-details', loadChildren: './pages/prelot-request/prelot-request-details/prelot-request-details.module#PrelotRequestDetailsPageModule' }
+  { 
+    path: 'prelot-request-details', 
+    loadChildren: './pages/prelot-request/prelot-request-details/prelot-request-details.module#PrelotRequestDetailsPageModule' 
+  }
 
 
 ];
