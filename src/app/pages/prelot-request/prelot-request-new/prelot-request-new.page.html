@@ -1,11 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Solicitud de empaque</ion-title>
+    <ion-title> Solicitud de empaque</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
   <app-presentation-form #presentationsForm>
   </app-presentation-form>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" color="success" (click)="crearEmpaque()">
+          <ion-icon name="cart"></ion-icon>
+          Solicitar
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" color="danger" href="prelot-request-list" routerDirection="back">
+          <ion-icon name="close-circle"></ion-icon>
+          Cancelar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
