@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrelotRequestDetalisPage } from './prelot-request-detalis.page';
+import { PrelotRequestDetailsPage } from './prelot-request-details.page';
 
-describe('PrelotRequestDetalisPage', () => {
-  let component: PrelotRequestDetalisPage;
-  let fixture: ComponentFixture<PrelotRequestDetalisPage>;
+describe('PrelotRequestDetailsPage', () => {
+  let component: PrelotRequestDetailsPage;
+  let fixture: ComponentFixture<PrelotRequestDetailsPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrelotRequestDetalisPage ],
+      declarations: [ PrelotRequestDetailsPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrelotRequestDetalisPage);
+    fixture = TestBed.createComponent(PrelotRequestDetailsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

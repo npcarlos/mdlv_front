@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PrelotRequestDetalisPage } from './prelot-request-detalis.page';
+import { PrelotRequestDetailsPage } from './prelot-request-details.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: PrelotRequestDetalisPage
+    component: PrelotRequestDetailsPage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PrelotRequestDetalisPage]
+  declarations: [PrelotRequestDetailsPage]
 })
-export class PrelotRequestDetalisPageModule {}
+export class PrelotRequestDetailsPageModule {}
