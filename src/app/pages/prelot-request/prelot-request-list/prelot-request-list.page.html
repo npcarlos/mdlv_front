@@ -1,14 +1,77 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>prelotRequestList</ion-title>
+    <ion-title>Lista de empaques</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button href="prelot-request-new" routerDirection="forward">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <h1>Empaques por Productos</h1>
+    <ion-list>
+      <ion-list-header color="light">
+        <h2>
+          Miel
+        </h2>
+      </ion-list-header>
+      <ion-item>
+        <ion-avatar slot="start">
+              <img src="assets/images/honey.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Tarro (200 ml)</h2>
+          <h3>Cantidad disponible: 10</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-avatar slot="start">
+                <img src="assets/images/honey.png">
+          </ion-avatar>
+          <ion-label>
+            <h2>Tubo (1 lt)</h2>
+            <h3>Cantidad disponible: 5</h3>
+          </ion-label>
+        </ion-item>
+        <br>
+      <ion-list-header color="light">
+          <h2>
+            Propóleo
+          </h2>
+        </ion-list-header>
+        <ion-item>
+          <ion-avatar slot="start">
+                <img src="assets/images/propolis.png">
+          </ion-avatar>
+          <ion-label>
+            <h2>Botella (100 ml)</h2>
+            <h3>Cantidad disponible: 25</h3>
+          </ion-label>
+        </ion-item>
+        <br>
+        <ion-list-header color="light">
+            <h2>
+              Polen
+            </h2>
+          </ion-list-header>
+          <ion-item>
+            <ion-avatar slot="start">
+                  <img src="assets/images/pollen.png">
+            </ion-avatar>
+            <ion-label>
+              <h2>Caja (300 gr)</h2>
+              <h3>Cantidad disponible: 30</h3>
+            </ion-label>
+          </ion-item>
+    </ion-list>
+
+      <br>
+    <ion-button color="tertiary" href="http://vtry-on.com/mdlv_test/public/generate-pdf">Ver recibo</ion-button>
+
+    <br>
+       
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button href="prelot-request-new" routerDirection="forward">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
 </ion-content>
