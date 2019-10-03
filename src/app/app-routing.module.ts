@@ -34,7 +34,10 @@ const routes: Routes = [
   { 
     path: 'prelot-request-new', 
     loadChildren: './pages/prelot-request/prelot-request-new/prelot-request-new.module#PrelotRequestNewPageModule' 
-  }
+  },
+  { path: 'supply-list', loadChildren: './pages/supply/supply-list/supply-list.module#SupplyListPageModule' },
+  { path: 'supply-new', loadChildren: './pages/supply/supply-new/supply-new.module#SupplyNewPageModule' }
+
 
 
 ];
