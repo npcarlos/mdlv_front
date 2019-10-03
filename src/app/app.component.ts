@@ -53,7 +53,7 @@ export class AppComponent {
     },
     {
       title: 'Estadísticas',
-      url: '/',
+      url: '/stats-list',
       icon: 'stats'
     },
     {
