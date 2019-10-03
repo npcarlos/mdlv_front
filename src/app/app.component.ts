@@ -43,7 +43,7 @@ export class AppComponent {
     },
     {
       title: 'Insumos',
-      url: '/',
+      url: '/supply-list',
       icon: 'nutrition'
     },
     {
