@@ -35,18 +35,22 @@ const routes: Routes = [
     path: 'prelot-request-new', 
     loadChildren: './pages/prelot-request/prelot-request-new/prelot-request-new.module#PrelotRequestNewPageModule' 
   },
-  { 
-    path: 'prelot-request-details', 
-    loadChildren: './pages/prelot-request/prelot-request-details/prelot-request-details.module#PrelotRequestDetailsPageModule' 
+  {
+    path: 'client-new', 
+    loadChildren: './pages/client/client-new/client-new.module#ClientNewPageModule' 
   },
   { 
-    path: 'supply-list', loadChildren: './pages/supply/supply-list/supply-list.module#SupplyListPageModule' 
+    path: 'client-list', 
+    loadChildren: './pages/client/client-list/client-list.module#ClientListPageModule' 
   },
   { 
-    path: 'supply-new', loadChildren: './pages/supply/supply-new/supply-new.module#SupplyNewPageModule' 
+    path: 'client-details', 
+    loadChildren: './pages/client/client-details/client-details.module#ClientDetailsPageModule' 
+  },
+  { 
+    path: 'client-update', 
+    loadChildren: './pages/client/client-update/client-update.module#ClientUpdatePageModule' 
   }
-
-
 
 ];
 
