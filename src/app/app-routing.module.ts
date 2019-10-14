@@ -34,10 +34,26 @@ const routes: Routes = [
   { 
     path: 'prelot-request-new', 
     loadChildren: './pages/prelot-request/prelot-request-new/prelot-request-new.module#PrelotRequestNewPageModule' 
-  },  { path: 'stats-list', loadChildren: './pages/stats/stats-list/stats-list.module#StatsListPageModule' },
-  { path: 'stats-details', loadChildren: './pages/stats/stats-details/stats-details.module#StatsDetailsPageModule' }
-
-
+  },
+  { 
+    path: 'prelot-request-details', 
+    loadChildren: './pages/prelot-request/prelot-request-details/prelot-request-details.module#PrelotRequestDetailsPageModule' 
+  },
+  { 
+    path: 'supply-list', 
+    loadChildren: './pages/supply/supply-list/supply-list.module#SupplyListPageModule' 
+  },
+  { 
+    path: 'supply-new', 
+    loadChildren: './pages/supply/supply-new/supply-new.module#SupplyNewPageModule' 
+  },
+  { 
+    path: 'stats-list', 
+    loadChildren: './pages/stats/stats-list/stats-list.module#StatsListPageModule' 
+  },
+  { path: 'stats-details', 
+    loadChildren: './pages/stats/stats-details/stats-details.module#StatsDetailsPageModule' 
+  }
 
 ];
 
@@ -48,3 +64,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
