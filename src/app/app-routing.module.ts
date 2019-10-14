@@ -49,8 +49,8 @@ const routes: Routes = [
     path: 'lot-list', loadChildren: './pages/lot/lot-list/lot-list.module#LotListPageModule'
   },
   { 
-  },
     path: 'lot-new', loadChildren: './pages/lot/lot-new/lot-new.module#LotNewPageModule' 
+  },
   { 
     path: 'lot-details', loadChildren: './pages/lot/lot-details/lot-details.module#LotDetailsPageModule' 
   }
