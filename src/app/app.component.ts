@@ -43,7 +43,7 @@ export class AppComponent {
     },
     {
       title: 'Insumos',
-      url: '/',
+      url: '/supply-list',
       icon: 'nutrition'
     },
     {
@@ -53,7 +53,7 @@ export class AppComponent {
     },
     {
       title: 'Estadísticas',
-      url: '/',
+      url: '/stats-list',
       icon: 'stats'
     },
     {
