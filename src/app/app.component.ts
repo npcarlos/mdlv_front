@@ -22,8 +22,8 @@ export class AppComponent {
       icon: 'list'
     },
     {
-      title: 'Order details',
-      url: '/order-details',
+      title: 'Lots',
+      url: '/lot-list',
       icon: 'cart'
     },
     {

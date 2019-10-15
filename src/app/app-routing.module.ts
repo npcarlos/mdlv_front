@@ -47,11 +47,21 @@ const routes: Routes = [
     path: 'supply-new', 
     loadChildren: './pages/supply/supply-new/supply-new.module#SupplyNewPageModule' 
   },
+  {
+    path: 'lot-list', loadChildren: './pages/lot/lot-list/lot-list.module#LotListPageModule'
+  },
+  { 
+    path: 'lot-new', loadChildren: './pages/lot/lot-new/lot-new.module#LotNewPageModule' 
+  },
+  { 
+    path: 'lot-details', loadChildren: './pages/lot/lot-details/lot-details.module#LotDetailsPageModule' 
+  },    
   { 
     path: 'stats-list', 
     loadChildren: './pages/stats/stats-list/stats-list.module#StatsListPageModule' 
   },
-  { path: 'stats-details', 
+  { 
+    path: 'stats-details', 
     loadChildren: './pages/stats/stats-details/stats-details.module#StatsDetailsPageModule' 
   }
 
