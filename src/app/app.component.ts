@@ -38,12 +38,12 @@ export class AppComponent {
     },
     {
       title: 'Clientes',
-      url: '/',
+      url: '/client-list',
       icon: 'contacts'
     },
     {
       title: 'Insumos',
-      url: '/',
+      url: '/supply-list',
       icon: 'nutrition'
     },
     {
