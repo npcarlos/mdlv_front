@@ -11,6 +11,8 @@ export class LotListPage implements OnInit {
   private endPoint:string = "products";
 
   private products: any;
+
+  private consultaAPI: string = "Nada";
   
   constructor(
     public api: RestApiService
@@ -20,13 +22,15 @@ export class LotListPage implements OnInit {
     }
 
     ngOnInit() {
+      this.consultaAPI = "init";
       this.getProducts();
       }
     
       async getProducts() {
-    
+        this.consultaAPI = "get";
         await this.api.get(this.endPoint)
           .subscribe(res => {
+            this.consultaAPI = res;
             console.log(res);
             if(res.success)
             {

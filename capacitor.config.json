@@ -3,5 +3,12 @@
   "appName": "mdlv",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "www"
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": true
+  },
+  "sever" : {
+    "iosScheme": "ionic",
+    "androidScheme": "http"
+  }
 }

@@ -5,5 +5,16 @@
 </ion-header>
 
 <ion-content>
-
+  <h2>Inventario ya empacado</h2>
+  <p>{{consultaAPI}}</p>
+  Lista de empaques por producto y presentación
+  <ion-card *ngFor="let product of products">
+    <h2>{{product.name}}</h2>
+    <ul>
+      <li *ngFor="let presentation of product.presentations">
+        Volumen: {{presentation.measurement_quantity}}<br>
+        Cantidad disponible: {{presentation.available_quantity}}<br>
+      </li>
+    </ul>
+  </ion-card>
 </ion-content>
