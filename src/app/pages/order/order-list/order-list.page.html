@@ -20,6 +20,7 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+  Órdenes de compra de los distribuidores
   <ion-list>
     <ion-item-sliding *ngFor="let order of orders">
       <ion-item>
@@ -29,9 +30,11 @@
         <ion-label>
           <h2 class="item-text-wrap"><b>{{order.customer.name}}</b></h2>
           <p><ion-icon name="pin" class="address"></ion-icon> {{order.customer.address}}</p>
+          <p><ion-icon name="phone-portrait" class="phone"></ion-icon>{{order.customer.cellphone}}</p>
           <p><ion-icon name="call" class="phone"></ion-icon>{{order.customer.phone}}</p>
           <p><ion-icon name="calendar" class="calendar"></ion-icon> {{order.created_at | date}}</p>
           <p><ion-icon name="car" class="delivery_date"></ion-icon> {{order.planned_delivery_date | date}}</p>
+          <p><ion-icon name="cash" class="cash"></ion-icon> ${{order.totalPrice}}</p>
         </ion-label>
       </ion-item>
       <ion-item-options side="end">
