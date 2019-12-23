@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/api/services/rest-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lot-list',
@@ -12,10 +13,13 @@ export class LotListPage implements OnInit {
 
   private products: any;
 
+  private prelotRequests: any;
+
   private consultaAPI: string = "Nada";
   
   constructor(
-    public api: RestApiService
+    public api: RestApiService,
+    private router: Router
     ) 
     {
 
@@ -24,8 +28,26 @@ export class LotListPage implements OnInit {
     ngOnInit() {
       this.consultaAPI = "init";
       this.getProducts();
+      this.getPrelotRequests();
       }
     
+      async getPrelotRequests() {
+        await this.api.get("prelot_requests")
+          .subscribe(res => {
+            if(res.success)
+            {
+                this.prelotRequests = res.data;
+            }
+            else
+            {
+              console.log(res);
+            }
+            //loading.dismiss();
+          }, err => {
+            console.log(err);
+            //loading.dismiss();
+          });
+      }
       async getProducts() {
         this.consultaAPI = "get";
         await this.api.get(this.endPoint)
@@ -48,4 +70,9 @@ export class LotListPage implements OnInit {
           });
       }
 
+      verSolicitudesEmpaque()
+      {
+        console.log("Ver solicitudes de empaque")
+        this.router.navigate(['/prelot-request-list']);
+      }
 }

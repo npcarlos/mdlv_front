@@ -12,14 +12,42 @@
 <ion-content  class="ion-padding">
   Inventario por producto y presentación
   <ion-card (click)="verSolicitudesEmpaque()" *ngIf="prelotRequests != undefined && prelotRequests.length > 0">    
-  Lista de empaques por producto y presentación
-  <ion-card *ngFor="let product of products">
-    <h2>{{product.name}}</h2>
-    <ul>
-      <li *ngFor="let presentation of product.presentations">
-        Volumen: {{presentation.measurement_quantity}}<br>
-        Cantidad disponible: {{presentation.available_quantity}}<br>
-      </li>
-    </ul>
+    <ion-card-header color="light">
+        <ion-card-title>Solicitudes de empaque</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="prelotRequests.length == 1">
+        Hay {{prelotRequests.length}} solicitud de empaque pendiente
+    </ion-card-content>
+    <ion-card-content *ngIf="prelotRequests.length > 1">
+        Hay {{prelotRequests.length}} solicitudes de empaque pendientes
+    </ion-card-content>
   </ion-card>
+
+  <br>
+  <ion-card *ngFor="let product of products">
+    <div *ngIf="product.presentations.length > 0">
+      <ion-list-header color="light">
+          <h2>{{product.name}} </h2>
+        </ion-list-header>
+        <ion-item  *ngFor="let presentation of product.presentations">
+          <ion-avatar slot="start">
+                <img src="assets/images/honey.png">
+          </ion-avatar>
+          <ion-label>
+            <h2><b>{{presentation.short_name}} ({{presentation.measurement}})</b></h2>
+            <h3><b>Cantidad disponible: {{presentation.available_quantity}}</b></h3>
+            <h3>Cantidad reservada: {{presentation.reserved_quantity}}</h3>
+            <h3>Cantidad total: {{presentation.stock_quantity}}</h3>
+          </ion-label>
+        </ion-item>
+    </div>
+   
+ 
+  </ion-card>   
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button href="prelot-request-new" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
