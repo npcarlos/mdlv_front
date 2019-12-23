@@ -11,7 +11,14 @@
 
 <ion-content class="ion-padding">
   
-    <ion-card>
+  <ion-card *ngIf="prelotRequest == undefined">
+      No existe la solicitud consultada
+  </ion-card>
+  <ion-card *ngIf="prelotRequest != undefined">
+      Existe!!!
+      {{prelotRequest.requested_quantity}}
+  </ion-card>
+    <!--ion-card>
         <img src="assets/images/propolis2.png" />
         <ion-card-header>
           <ion-card-subtitle>EMPAQUE</ion-card-subtitle>
@@ -40,6 +47,6 @@
               </ion-col>
             </ion-row>
           </ion-grid>
-      </ion-card>
+      </ion-card-->
 
 </ion-content>
