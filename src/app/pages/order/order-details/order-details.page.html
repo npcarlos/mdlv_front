@@ -11,65 +11,101 @@
 
 <ion-content class="ion-padding" *ngIf="currentOrder != undefined">
 
-  <ion-list lines="none">
-    <ion-item>
-      <ion-label>
-        <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
-
-        <h2>Cliente {{currentOrder.customer.name}}</h2>
-        <h4>Fecha de solicitud</h4>
-        <p>
-          <ion-icon name="pin" class="address"></ion-icon> {{currentOrder.customer.address}}
-        </p>
-        <p>
-          <ion-icon name="call" class="phone"></ion-icon>{{currentOrder.customer.phone}}
-        </p>
-        <p>
-          <ion-icon name="calendar" class="calendar"></ion-icon> 01/01/2019
-        </p>
-        <p>
-          <ion-icon name="car" class="delivery_date"></ion-icon> 01/01/2019
-        </p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-
-  <!--ion-card>
-  <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
-  <ion-card-header>
-    <ion-card-title>Cliente</ion-card-title>
-    <ion-card-subtitle>01/01/2019</ion-card-subtitle>
-    <p><ion-icon name="pin" class="address"></ion-icon> Calle 1 # 1 - 1 </p>
-    <p><ion-icon name="call" class="phone"></ion-icon>1234567</p>
-    <p><ion-icon name="calendar" class="calendar"></ion-icon> 01/01/2019</p>
-    <p><ion-icon name="car" class="delivery_date"></ion-icon> 01/01/2019</p>
-  </ion-card-header>
-  <ion-card-content>
-    
-  </ion-card-content>
-</ion-card-->
-  <h2>Productos </h2>
-  <ion-card >
+  <ion-card>
     <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
     <ion-card-header>
-      <ion-card-title>Miel</ion-card-title>
+      <ion-card-title>{{currentOrder.customer.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Cantidad: 000</p>
-      <p>Valor unitario: $ 000.000</p>
-      <p>Subtotal: $ 000.000</p>
+      <p>
+        <ion-icon name="pin" class="address"></ion-icon> {{currentOrder.customer.address}}
+      </p>
+      <p>
+        <ion-icon name="call" class="phone"></ion-icon> {{currentOrder.customer.phone}}
+      </p>
+      <br>
+      <p>
+        <ion-icon name="calendar" class="calendar"></ion-icon> 01/01/2019
+      </p>
+      <p>
+        <ion-icon name="car" class="delivery_date"></ion-icon> 01/01/2019
+      </p>
+      <p>
+        <ion-icon name="cash" class="cash"></ion-icon> $
+      </p>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
+      <ion-card-header>
+        <ion-card-title><ion-icon name="chatbubbles" class="address"></ion-icon> Comentarios</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <h2><b>Públicos</b></h2>
+          <p>
+            {{currentOrder.public_comments}}
+          </p>
+          <h2><b>Privados</b></h2>
+          <p>
+            {{currentOrder.private_comments}}
+          </p>
+            
+      </ion-card-content>
+    </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>Productos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+  <!--ion-card  *ngFor="let item of currentOrder.order_items">
+    <ion-img src="assets/images/logos/abeja_izq.png"></ion-img>
     <ion-card-header>
-      <ion-card-title>Miel</ion-card-title>
+      <ion-card-title>{{ item.presentation.short_name}} ({{ item.presentation.measurement}})</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Cantidad: 000</p>
-      <p>Valor unitario: $ 000.000</p>
-      <p>Subtotal: $ 000.000</p>
+      <p><b>Cantidad:</b> {{item.quantity}}</p>
+      <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price}}</p>
+      <p *ngIf="item.discount.uuid != '80863b44-9f07-4d4e-b1f5-64053052e5c7'"><b>Descuento:</b> {{ item.discount.discount_percentage }}% </p>
+      
+      <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100)}}</p>
     </ion-card-content>
-  </ion-card>
+  </ion-card-->
+
+  <ion-list>
+      <ion-item *ngFor="let item of currentOrder.order_items">
+        <ion-thumbnail item-left>
+          <img src="assets/images/logos/abeja_izq.png">
+        </ion-thumbnail>
+        <ion-label>
+          <h2 class="item-text-wrap"><b>{{ item.presentation.short_name}} ({{ item.presentation.measurement}})</b></h2>
+          <p><b>Cantidad:</b> {{item.quantity}}</p>
+          <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price}}</p>
+          <p *ngIf="item.discount.uuid != '80863b44-9f07-4d4e-b1f5-64053052e5c7'"><b>Descuento:</b> {{ item.discount.discount_percentage }}% </p>
+          
+          <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100)}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+<ion-list>
+    <ion-list-header>
+        <ion-label>Acciones</ion-label>
+      </ion-list-header>
+      <ion-button expand="full" color="success" (click)="downloadReceipt(order)">
+        <ion-icon name="checkmark-circle" size="large"></ion-icon> &nbsp; Entregar
+      </ion-button>
+      <ion-button expand="full" color="secondary" (click)="downloadReceipt(order)">
+        <ion-icon name="cloud-download" size="large"></ion-icon> &nbsp; Descargar recibo
+      </ion-button>
+      <ion-item-divider>
+          <ion-label>
+            Danger Zone
+          </ion-label>
+        </ion-item-divider>
+      <ion-button expand="full" color="danger" (click)="downloadReceipt(order)">
+          <ion-icon name="trash" size="large"></ion-icon> &nbsp; Eliminar
+        </ion-button>
+</ion-list>
 </ion-content>
