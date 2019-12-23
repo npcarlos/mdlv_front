@@ -1,10 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Detalle de la Orden</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+          Detalle de la orden de compra
+        </ion-title>
+      </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" *ngIf="currentOrder != undefined">
 
   <ion-list lines="none">
     <ion-item>
