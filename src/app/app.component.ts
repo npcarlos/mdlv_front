@@ -17,18 +17,8 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-    {
-      title: 'Lots',
+      title: 'Inventario',
       url: '/lot-list',
-      icon: 'cart'
-    },
-    {
-      title: 'Empaque',
-      url: '/prelot-request-list',
       icon: 'filing'
     },
     {
