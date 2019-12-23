@@ -9,7 +9,8 @@ const httpOptions = {
 };
 
 
-const apiUrl = "http://vtry-on.com/mdlv-dev/public/api/";
+const apiUrl = "http://192.168.0.10/mdlv_back/public/api/";
+//const apiUrl = "http://vtry-on.com/mdlv-dev/public/api/";
 //const apiUrl = "http://localhost:8081/mdlv_test/public/api/";
 
 @Injectable({
@@ -58,7 +59,7 @@ export class RestApiService {
   }
 
   post(endpoint: string, data): Observable<any> {
-    const url = '${apiUrl}/${endpoint}';
+    const url = apiUrl + endpoint;
     return this.http.post(url, data, httpOptions)
       .pipe(
       catchError(this.handleError)
@@ -79,5 +80,10 @@ export class RestApiService {
       .pipe(
       catchError(this.handleError)
       );
+  }
+
+  getApiURL()
+  {
+    return apiUrl;
   }
 }
