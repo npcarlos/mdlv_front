@@ -15,14 +15,37 @@
   </p>
   
   <ion-item>
-    <ion-label position="floating">Cliente</ion-label>
-    <ion-select ok-text="Seleccionar" cancel-text="Cancelar" [(ngModel)]="customer">
-      <ion-select-option *ngFor="let c of customers" [value]="c">{{c.name}}</ion-select-option>
-    </ion-select>
+      <ion-label position="floating">Cliente</ion-label>
+      <ion-select ok-text="Seleccionar" cancel-text="Cancelar" [(ngModel)]="customer">
+        <ion-select-option *ngFor="let c of customers" [value]="c">{{c.name}}</ion-select-option>
+      </ion-select>
   </ion-item>
-  
+  <ion-item>
+      <p>Total: $ {{presentationsForm.getTotalPrice()}}</p>
+  </ion-item>
   <app-presentation-form #presentationsForm>
   </app-presentation-form>
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title><ion-icon name="chatbubbles" class="address"></ion-icon> Comentarios</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <h2><b>Públicos</b></h2>
+          <p>
+              <ion-item>
+                  <ion-textarea [(ngModel)]="public_comments" rows="6" cols="20" placeholder="Agregar comentarios..."></ion-textarea>
+                </ion-item>
+          </p>
+          <h2><b>Privados</b></h2>
+          <p>
+            <ion-item>
+                <ion-textarea [(ngModel)]="private_comments" rows="6" cols="20" placeholder="Agregar comentarios..."></ion-textarea>
+              </ion-item>
+          </p>
+            
+      </ion-card-content>
+    </ion-card>
+
   <ion-grid>
     <ion-row>
       <ion-col>
