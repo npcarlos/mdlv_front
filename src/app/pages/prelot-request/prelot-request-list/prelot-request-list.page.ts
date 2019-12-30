@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/api/services/rest-api.service';
+import { PrelotRequestService } from 'src/app/api/services/prelot-request.service';
 import { Router } from '@angular/router';
 
 
@@ -16,32 +17,20 @@ export class PrelotRequestListPage implements OnInit {
 
   constructor(
     public api: RestApiService,
-    private router: Router
+    private router: Router,
+    private prelotRequestService?: PrelotRequestService
   ) { }
 
   ngOnInit() {
-    this.getRequests();
+  }
+  
+  ionViewDidEnter()
+  {
+   this.prelotRequestService.getRequests().then(data =>
+      this.prelotRequests = data
+    );
   }
 
-  async getRequests() {
-    
-    await this.api.get(this.endPoint)
-     .subscribe(res => {
-       console.log(res);
-       if(res.success)
-       {
-         this.prelotRequests = res.data;
-       }
-       else
-       {
-         console.log(res);
-       }
-       //loading.dismiss();
-     }, err => {
-       console.log(err);
-       //loading.dismiss();
-     });
- }
 
  viewDetails(item)
  {
@@ -50,6 +39,15 @@ export class PrelotRequestListPage implements OnInit {
 
  marcarComoEmpacado(item)
  {
-
+  this.prelotRequestService.cambiarEstadoPrelotSolicitarYEmpacar(item).then(data =>{
+    this.prelotRequestService.getRequests().then(dataR =>
+      this.prelotRequests = dataR
+    );
+  });
+ }
+ 
+ agregarSolicitudEmpaque()
+ {
+   this.router.navigate(['/prelot-request-new']);
  }
 }
