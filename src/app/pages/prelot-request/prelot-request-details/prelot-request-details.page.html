@@ -15,8 +15,43 @@
       No existe la solicitud consultada
   </ion-card>
   <ion-card *ngIf="prelotRequest != undefined">
-      Existe!!!
-      {{prelotRequest.requested_quantity}}
+    <img src="assets/images/propolis2.png" />
+    <ion-card-header>
+      <ion-card-title>{{prelotRequest.presentation.short_name}} ({{prelotRequest.presentation.measurement}})</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <b>Estado:</b> {{prelotRequest.prelot_status.name}}
+      <br>
+      <b>Cantidad solicitada:</b> {{prelotRequest.requested_quantity}} unids.
+      <br>
+    <div *ngIf="prelotRequest.planned_packaging_date != undefined && prelotRequest.planned_packaging_date != null">
+      <b>Fecha planeada:</b> {{prelotRequest.planned_packaging_date}}
+    </div>
+    <br>
+    <div *ngIf="prelotRequest.comments != undefined && prelotRequest.comments != null && prelotRequest.comments != ''">
+      <b>Comentarios:</b>
+      <p>{{prelotRequest.comments}}</p>
+    </div>
+    <ion-list>
+      <ion-list-header>
+          <ion-label>Acciones</ion-label>
+        </ion-list-header>
+        <ion-button expand="full" color="secondary" (click)="cambiarEstadoPrelotSolicitar()">
+          <ion-icon name="cube" size="large"></ion-icon> &nbsp; Solicitar
+        </ion-button>
+        <ion-button expand="full" color="success" (click)="cambiarEstadoPrelotSolicitarYEmpacar()">
+          <ion-icon name="checkmark-circle" size="large"></ion-icon> &nbsp; Solicitar y empacar
+        </ion-button>
+        <ion-item-divider>
+            <ion-label>
+              Zona de peligro
+            </ion-label>
+          </ion-item-divider>
+        <ion-button expand="full" color="danger" (click)="eliminarPrelot()">
+            <ion-icon name="trash" size="large"></ion-icon> &nbsp; Eliminar
+          </ion-button>
+  </ion-list>
+  </ion-card-content>
   </ion-card>
     <!--ion-card>
         <img src="assets/images/propolis2.png" />
