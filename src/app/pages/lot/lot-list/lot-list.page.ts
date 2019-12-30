@@ -27,9 +27,13 @@ export class LotListPage implements OnInit {
 
     ngOnInit() {
       this.consultaAPI = "init";
+    }
+    
+    ionViewDidEnter()
+    {
       this.getProducts();
       this.getPrelotRequests();
-      }
+    }
     
       async getPrelotRequests() {
         await this.api.get("prelot_requests")
@@ -74,5 +78,10 @@ export class LotListPage implements OnInit {
       {
         console.log("Ver solicitudes de empaque")
         this.router.navigate(['/prelot-request-list']);
+      }
+      
+      agregarSolicitudEmpaque()
+      {
+        this.router.navigate(['/prelot-request-new']);
       }
 }

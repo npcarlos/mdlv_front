@@ -37,7 +37,7 @@
             <h2><b>{{presentation.short_name}} ({{presentation.measurement}})</b></h2>
             <h3><b>Cantidad disponible: {{presentation.available_quantity}}</b></h3>
             <h3>Cantidad reservada: {{presentation.reserved_quantity}}</h3>
-            <h3>Cantidad total: {{presentation.stock_quantity}}</h3>
+            <h3>Cantidad total inventario: {{presentation.stock_quantity}}</h3>
           </ion-label>
         </ion-item>
     </div>
@@ -46,7 +46,7 @@
   </ion-card>   
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button href="prelot-request-new" routerDirection="forward">
+    <ion-fab-button  (click)="agregarSolicitudEmpaque()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
