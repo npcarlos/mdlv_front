@@ -9,7 +9,7 @@ const httpOptions = {
 };
 
 
-const apiUrl = "http://192.168.0.10/mdlv_back/public/api/";
+const apiUrl = "http://192.168.0.15/mdlv_back/public/api/";
 //const apiUrl = "http://vtry-on.com/mdlv-dev/public/api/";
 //const apiUrl = "http://localhost:8081/mdlv_test/public/api/";
 
@@ -67,7 +67,8 @@ export class RestApiService {
   }
 
   update(endpoint: string, id: string, data): Observable<any> {
-    const url = '${apiUrl}/${endpoint}/${id}/edit';
+    //const url = '${apiUrl}/${endpoint}/${id}/edit';
+    const url = apiUrl + endpoint + "/" + id ;
     return this.http.put(url, data, httpOptions)
       .pipe(
       catchError(this.handleError)
