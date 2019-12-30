@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestApiService } from 'src/app/api/services/rest-api.service';
+import { OrderService } from 'src/app/api/services/order.service';
+
+import { Plugins } from '@capacitor/core';
+
+const { Modals } = Plugins;
 
 @Component({
   selector: 'app-order-details',
@@ -18,42 +23,41 @@ export class OrderDetailsPage implements OnInit {
   
   constructor(
     private activatedRoute: ActivatedRoute,
+    private orderService: OrderService,
     public api: RestApiService
   ) { }
 
   ngOnInit() {
     this.idOrder = this.activatedRoute.snapshot.paramMap.get('order');
-    this.getOrderInfo();
-
-  }
-
-  
-  async getOrderInfo() {
-
-    await this.api.get(this.endPoint + "/" + this.idOrder)
-      .subscribe(res => {
-        console.log(res);
-        if(res.success)
-        {
-            this.currentOrder = res.data;
-            console.log(JSON.stringify(this.currentOrder));
-        }
-        else
-        {
-          console.log(res);
-        }
-        //loading.dismiss();
-      }, err => {
-        console.log(err);
-        //loading.dismiss();
-      });
+    this.orderService.getOrderInfo(this.idOrder).then(order => {
+        this.currentOrder = order;
+    });
 
   }
 
   downloadReceipt()
   {
-     let url = this.api.getApiURL() + this.endPoint + '/' + this.idOrder + '/generatePDF';
-     window.open(url);
+    if( this.currentOrder != undefined)
+    {
+      this.orderService.downloadReceipt(this.currentOrder);
+    }
   }
 
+  async eliminarOrden(order)
+  {
+    let alertRet = await Modals.alert({
+      title: 'Error',
+      message: "No implementado aún"
+    });
+  }
+
+  marcarComoEntregado()
+  {
+    if(this.currentOrder != undefined)
+    {
+      this.orderService.marcarComoEntregado(this.currentOrder).then(order => {
+          this.currentOrder = order;
+      });
+    }
+  }
 }

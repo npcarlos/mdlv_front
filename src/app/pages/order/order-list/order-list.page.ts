@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from 'src/app/api/services/rest-api.service';
+import { OrderService } from 'src/app/api/services/order.service';
 
 @Component({
   selector: 'app-order-list',
@@ -17,44 +18,26 @@ export class OrderListPage implements OnInit {
   
   constructor(
     private router: Router,
+    private orderService: OrderService,
     public api: RestApiService
   ) { }
 
-  ngOnInit() {
-    
-    this.getOrders();
+  ngOnInit()
+  {
     
   }
-
-  
-  async getOrders() {
-    await this.api.get(this.endPoint)
-      .subscribe(res => {
-        console.log(res);
-        if(res.success)
-        {
-            this.orders = res.data;
-            this.originalOrders = res.data;
-        }
-        else
-        {
-          console.log(res);
-        }
-        //loading.dismiss();
-      }, err => {
-        console.log(err);
-        //loading.dismiss();
-      });
-
+  ionViewDidEnter()
+  {
+    this.orderService.getOrders().then(data =>
+      {
+        this.orders = data;
+        this.originalOrders = data;
+      }
+    );
   }
-
   downloadReceipt(order)
   {
-     let url = this.api.getApiURL() + this.endPoint + '/' + order.uuid + '/generatePDF';
-     window.open(url);
-     console.log(url);
-    
-    console.log("Descargar " + order.uuid);
+     this.orderService.downloadReceipt(order)
   }
 
   viewDetails(order)
@@ -74,5 +57,15 @@ export class OrderListPage implements OnInit {
       {
         this.orders = JSON.parse(JSON.stringify(this.originalOrders));
       }
+  }
+
+  marcarComoEntregado(order)
+  {
+    this.orderService.marcarComoEntregado(order).then(data => {
+      this.orderService.getOrders().then(dataR => {
+        this.originalOrders = dataR;
+        this.orders = this.originalOrders;
+      })
+    });
   }
 }

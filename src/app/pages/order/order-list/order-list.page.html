@@ -13,39 +13,41 @@
   <ion-item *ngIf="orders != undefined && orders.length == 0">
     No hay órdenes de compra en el momento.
   </ion-item>
-  <ion-grid>
-      <ion-row>
-          <ion-col>
-              <button (click)="filterData()"> <ion-icon name="funnel"></ion-icon></button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-  Órdenes de compra de los distribuidores
-  <ion-list>
-    <ion-item-sliding *ngFor="let order of orders">
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="assets/images/logos/abeja_izq.png">
-        </ion-thumbnail>
-        <ion-label>
-          <h2 class="item-text-wrap"><b>{{order.customer.name}}</b></h2>
-          <p><ion-icon name="pin" class="address"></ion-icon> {{order.customer.address}}</p>
-          <p><ion-icon name="phone-portrait" class="phone"></ion-icon>{{order.customer.cellphone}}</p>
-          <p><ion-icon name="call" class="phone"></ion-icon>{{order.customer.phone}}</p>
-          <p><ion-icon name="calendar" class="calendar"></ion-icon> {{order.created_at | date}}</p>
-          <p><ion-icon name="car" class="delivery_date"></ion-icon> {{order.planned_delivery_date | date}}</p>
-          <p><ion-icon name="cash" class="cash"></ion-icon> ${{order.totalPrice}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="viewDetails(order)"><ion-icon name="eye" size="large"></ion-icon>Info</ion-item-option>
-        <ion-item-option color="secondary" (click)="downloadReceipt(order)"><ion-icon name="cloud-download" size="large"></ion-icon>Recibo</ion-item-option>
-      </ion-item-options>
-      
-      
-    </ion-item-sliding>
-  </ion-list>
-
+  <div *ngIf="orders != undefined && orders.length > 0">
+      <ion-grid>
+          <ion-row>
+              <ion-col>
+                  <button (click)="filterData()"> <ion-icon name="funnel"></ion-icon></button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+      Órdenes de compra de los distribuidores
+      <ion-list>
+        <ion-item-sliding *ngFor="let order of orders">
+          <ion-item>
+            <ion-thumbnail item-left>
+              <img src="assets/images/logos/abeja_izq.png">
+            </ion-thumbnail>
+            <ion-label>
+              <h2 class="item-text-wrap"><b>{{order.customer.name}}</b></h2>
+              <p><ion-icon name="pin" class="address"></ion-icon> {{order.customer.address}}</p>
+              <p><ion-icon name="phone-portrait" class="phone"></ion-icon><a href="tel:{{order.customer.cellphone}}">{{order.customer.cellphone}}</a></p>
+              <p><ion-icon name="call" class="phone"></ion-icon><a href="tel:{{order.customer.phone}}">{{order.customer.phone}}</a></p>
+              <p><ion-icon name="calendar" class="calendar"></ion-icon> {{order.created_at | date}}</p>
+              <p><ion-icon name="car" class="delivery_date"></ion-icon> {{order.planned_delivery_date | date}}</p>
+              <p><ion-icon name="cash" class="cash"></ion-icon> ${{order.totalPrice}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option (click)="viewDetails(order)"><ion-icon name="eye" size="large"></ion-icon>Info</ion-item-option>
+            <ion-item-option color="secondary" (click)="downloadReceipt(order)"><ion-icon name="cloud-download" size="large"></ion-icon>Recibo</ion-item-option>
+            <ion-item-option color="success" (click)="marcarComoEntregado(order)"><ion-icon name="checkmark-circle" size="large"></ion-icon>Entregar</ion-item-option>
+          </ion-item-options>
+          
+          
+        </ion-item-sliding>
+      </ion-list>
+  </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button href="order-new" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
