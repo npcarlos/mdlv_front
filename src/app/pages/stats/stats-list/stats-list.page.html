@@ -10,5 +10,18 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label position="floating">Fecha inicial:</ion-label>
+    <ion-datetime [(ngModel)]="initial_date" max="{{final_date}}"
+      dayShortNames="Lun, Mar, Mié, Jue, Vie, Sáb, Dom"
+      displayFormat="DDD DD-MMM-YY"
+      monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dec"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Fecha final:</ion-label>
+    <ion-datetime [(ngModel)]="final_date" min={{initial_date}} max="{{today}}"
+      dayShortNames="Lun, Mar, Mié, Jue, Vie, Sáb, Dom"
+      displayFormat="DDD DD-MMM-YY"
+      monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dec"></ion-datetime>
+  </ion-item>
 </ion-content>

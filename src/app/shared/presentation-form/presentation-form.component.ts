@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { RestApiService } from 'src/app/api/services/rest-api.service';
 
@@ -9,6 +9,7 @@ import { RestApiService } from 'src/app/api/services/rest-api.service';
 })
 export class PresentationFormComponent implements OnInit {
 
+  @Input() limitMaximumWithAvailable: boolean;
   
   private endPoint: string = "products";
   
@@ -21,10 +22,19 @@ export class PresentationFormComponent implements OnInit {
     public api: RestApiService
   ) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this.pedidos = [];
     this.products = [];
     this.getProducts();
+    
+    if(this.limitMaximumWithAvailable == undefined)
+    {
+      this.limitMaximumWithAvailable = false;
+    }
+  }
+
+  ionViewDidEnter() {
   }
   
   async getProducts() 

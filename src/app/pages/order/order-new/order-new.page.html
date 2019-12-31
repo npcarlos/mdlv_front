@@ -21,9 +21,16 @@
       </ion-select>
   </ion-item>
   <ion-item>
-      <p>Total: $ {{presentationsForm.getTotalPrice()}}</p>
+    <ion-label position="floating">Fecha planeada de entrega:</ion-label>
+    <ion-datetime [(ngModel)]="planned_delivery_date"  min="{{fechaMinima}}" max="3000"
+      dayShortNames="Lun, Mar, Mié, Jue, Vie, Sáb, Dom"
+      displayFormat="DDD DD-MMM-YY HH:mm"
+      monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dec"></ion-datetime>
   </ion-item>
-  <app-presentation-form #presentationsForm>
+  <ion-item>
+      <p>Total: $ {{presentationsForm.getTotalPrice() | number : fractionSize}}</p>
+  </ion-item>
+  <app-presentation-form #presentationsForm limitMaximumWithAvailable="true">
   </app-presentation-form>
   <ion-card>
       <ion-card-header>

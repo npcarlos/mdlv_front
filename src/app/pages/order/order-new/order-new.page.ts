@@ -27,6 +27,11 @@ export class OrderNewPage implements OnInit {
 
   private private_comments: string;
   
+  private fechaMinima: string;
+
+  private planned_delivery_date: string;
+
+  
   constructor(
     //private alertController: AlertController,
     public api: RestApiService,
@@ -39,6 +44,11 @@ export class OrderNewPage implements OnInit {
 
   ngOnInit() {
     this.getCustomers();
+  }
+
+  ionViewDidEnter()
+  {
+    this.fechaMinima = new Date().toISOString();
   }
 
   async getCustomers() {

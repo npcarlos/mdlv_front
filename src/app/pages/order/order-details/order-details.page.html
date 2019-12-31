@@ -30,13 +30,13 @@
       
       <br>
       <p>
-        <ion-icon name="calendar" class="calendar"></ion-icon> 01/01/2019
+        <ion-icon name="calendar" class="calendar"></ion-icon> {{currentOrder.created_at | date}}
       </p>
       <p>
-        <ion-icon name="car" class="delivery_date"></ion-icon> 01/01/2019
+        <ion-icon name="car" class="delivery_date"></ion-icon> {{currentOrder.delivery_date | date}}
       </p>
       <p>
-        <ion-icon name="cash" class="cash"></ion-icon> $
+        <ion-icon name="cash" class="cash"></ion-icon> $ {{currentOrder.totalPrice | number : fractionSize}}
       </p>
     </ion-card-content>
   </ion-card>
@@ -63,19 +63,6 @@
         <ion-card-title>Productos</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-  <!--ion-card  *ngFor="let item of currentOrder.order_items">
-    <ion-img src="assets/images/logos/abeja_izq.png"></ion-img>
-    <ion-card-header>
-      <ion-card-title>{{ item.presentation.short_name}} ({{ item.presentation.measurement}})</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p><b>Cantidad:</b> {{item.quantity}}</p>
-      <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price}}</p>
-      <p *ngIf="item.discount.uuid != '80863b44-9f07-4d4e-b1f5-64053052e5c7'"><b>Descuento:</b> {{ item.discount.discount_percentage }}% </p>
-      
-      <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100)}}</p>
-    </ion-card-content>
-  </ion-card-->
 
   <ion-list>
       <ion-item *ngFor="let item of currentOrder.order_items">
@@ -85,10 +72,10 @@
         <ion-label>
           <h2 class="item-text-wrap"><b>{{ item.presentation.short_name}} ({{ item.presentation.measurement}})</b></h2>
           <p><b>Cantidad:</b> {{item.quantity}}</p>
-          <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price}}</p>
+          <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price | number : fractionSize}}</p>
           <p *ngIf="item.discount.uuid != '80863b44-9f07-4d4e-b1f5-64053052e5c7'"><b>Descuento:</b> {{ item.discount.discount_percentage }}% </p>
           
-          <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100)}}</p>
+          <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100) | number : fractionSize}}</p>
         </ion-label>
       </ion-item>
     </ion-list>
@@ -98,10 +85,10 @@
     <ion-list-header>
         <ion-label>Acciones</ion-label>
       </ion-list-header>
-      <ion-button expand="full" color="success" (click)="downloadReceipt(order)">
+      <ion-button expand="full" color="success" (click)="marcarComoEntregado()">
         <ion-icon name="checkmark-circle" size="large"></ion-icon> &nbsp; Entregar
       </ion-button>
-      <ion-button expand="full" color="secondary" (click)="downloadReceipt(order)">
+      <ion-button expand="full" color="secondary" (click)="downloadReceipt()">
         <ion-icon name="cloud-download" size="large"></ion-icon> &nbsp; Descargar recibo
       </ion-button>
       <ion-item-divider>
@@ -109,7 +96,7 @@
             Zona de peligro
           </ion-label>
         </ion-item-divider>
-      <ion-button expand="full" color="danger" (click)="eliminarOrden(order)">
+      <ion-button expand="full" color="danger" (click)="eliminarOrden()">
           <ion-icon name="trash" size="large"></ion-icon> &nbsp; Eliminar
         </ion-button>
 </ion-list>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestApiService } from 'src/app/api/services/rest-api.service';
 import { OrderService } from 'src/app/api/services/order.service';
+import { Router } from '@angular/router';
 
 import { Plugins } from '@capacitor/core';
 
@@ -22,17 +23,23 @@ export class OrderDetailsPage implements OnInit {
   private idOrder: any;
   
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
     public api: RestApiService
   ) { }
 
   ngOnInit() {
+    
+
+  }
+
+  ionViewDidEnter()
+  {
     this.idOrder = this.activatedRoute.snapshot.paramMap.get('order');
     this.orderService.getOrderInfo(this.idOrder).then(order => {
         this.currentOrder = order;
     });
-
   }
 
   downloadReceipt()
@@ -43,7 +50,7 @@ export class OrderDetailsPage implements OnInit {
     }
   }
 
-  async eliminarOrden(order)
+  async eliminarOrden()
   {
     let alertRet = await Modals.alert({
       title: 'Error',
@@ -51,12 +58,15 @@ export class OrderDetailsPage implements OnInit {
     });
   }
 
+  
   marcarComoEntregado()
   {
     if(this.currentOrder != undefined)
     {
-      this.orderService.marcarComoEntregado(this.currentOrder).then(order => {
-          this.currentOrder = order;
+      this.orderService.marcarComoEntregado(this.currentOrder).then(data => {
+        this.orderService.getOrders().then(dataR => {
+          this.router.navigate(['/order-list']);
+        })
       });
     }
   }
