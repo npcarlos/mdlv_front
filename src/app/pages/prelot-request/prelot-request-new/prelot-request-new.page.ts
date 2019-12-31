@@ -13,11 +13,14 @@ const { Modals } = Plugins;
 })
 export class PrelotRequestNewPage implements OnInit {
 
-  private endPoint:string = "prelot_requests";
   
   @ViewChild(PresentationFormComponent, {static: false}) presentationsForm: PresentationFormComponent;
 
   private comments: string;
+
+  private fechaMinima: string;
+
+  private planned_packaging_date: string;
 
   constructor(
     public api: RestApiService,
@@ -25,7 +28,11 @@ export class PrelotRequestNewPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+  }
+  
+  ionViewDidEnter()
+  {
+    this.fechaMinima = new Date().toISOString();
   }
 
   async solicitarEmpaque()
@@ -67,8 +74,11 @@ export class PrelotRequestNewPage implements OnInit {
       });
       if( confirmRet.value)
       {
-        console.log("enviar peticiión");
-        this.enviarOrden(itemsPedidos);
+        let resultado = this.enviarOrden(itemsPedidos, this.comments, this.planned_packaging_date);
+        if (resultado)
+        {
+          this.router.navigate(['/prelot-request-list']);
+        }
       }
     }
     else
@@ -85,29 +95,32 @@ export class PrelotRequestNewPage implements OnInit {
     }
   }
 
-  async enviarOrden(pedido) {
-    
-    var request = {
-      administrator_id:1,
-      cart: pedido,
-      comments: (this.comments == undefined || this.comments == "") ? null : this.comments,
-     };
-     
-     console.log(JSON.stringify(request));
-     
-    
-     this.api.post(this.endPoint + "/group", request)
-     .subscribe(res => {
-       console.log(JSON.stringify(res));
-       if (res.success) {
-           this.router.navigate(['/prelot-request-list']);
-       }
-       else {
-         console.log(res);
-       }
-     }, err => {
-       console.log(err);
-     });
+  
+ async enviarOrden(pedido, comments, planned_packaging_date) {
+  let resultado = false;
+  var request = {
+    administrator_id:1,
+    cart: pedido,
+    comments: (comments == undefined || comments == "") ? null : comments,
+    planned_packaging_date: (planned_packaging_date == undefined || planned_packaging_date == "") ? null : planned_packaging_date,
+  };
+  
+  
+  
+  this.api.post("prelot_requests/group", request)
+  .subscribe(res => {
+    if (res.success) {
+        resultado = true;
+        return resultado;
+    }
+    else {
+      console.log(res);
+      return resultado;
+    }
+  }, err => {
+    console.log(err);
+  });
+  
+}
 
- }
 }

@@ -13,8 +13,9 @@
       </ion-thumbnail>
       <ion-label class="labelItem">
         <p class="item-text-wrap">{{presentation.short_name}} ({{presentation.measurement}})</p>
+        <p>Disponible: {{presentation.available_quantity}}</p>
       </ion-label>
-      <ion-input class="ion-text-end" type="number" min="0" placeholder="0" side="end" [(ngModel)]="pedidos[indexProducto].presentations[indexPresentation].requested_quantity" ></ion-input>
+      <ion-input class="ion-text-end" type="number" min="0" max="{{presentation.available_quantity}}" placeholder="0" side="end" [(ngModel)]="pedidos[indexProducto].presentations[indexPresentation].requested_quantity" ></ion-input>
     </ion-item>
   </div>
 
