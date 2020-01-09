@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/api/services/rest-api.service';
-import { PrelotRequestService } from 'src/app/api/services/prelot-request.service';
+import { PrelotRequestService } from 'src/app/api/services/models/prelot-request.service';
 import { Router } from '@angular/router';
 
 

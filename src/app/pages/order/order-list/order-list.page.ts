@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestApiService } from 'src/app/api/services/rest-api.service';
-import { OrderService } from 'src/app/api/services/order.service';
+import { OrderService } from 'src/app/api/services/models/order.service';
 
 @Component({
   selector: 'app-order-list',
