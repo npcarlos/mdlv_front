@@ -15,7 +15,7 @@
       No existe la solicitud consultada
   </ion-card>
   <ion-card *ngIf="prelotRequest != undefined">
-    <img src="assets/images/propolis2.png" />
+    <img src="assets/images/products/{{ prelotRequest.presentation.image  || 'honey.png'}}" />
     <ion-card-header>
       <ion-card-title>{{prelotRequest.presentation.short_name}} ({{prelotRequest.presentation.measurement}})</ion-card-title>
     </ion-card-header>

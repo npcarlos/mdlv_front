@@ -31,7 +31,7 @@
         </ion-list-header>
         <ion-item  *ngFor="let presentation of product.presentations">
           <ion-avatar slot="start">
-                <img src="assets/images/honey.png">
+                <img src="assets/images/products/{{ presentation.image  || 'honey.png'}}">
           </ion-avatar>
           <ion-label>
             <h2><b>{{presentation.short_name}} ({{presentation.measurement}})</b></h2>

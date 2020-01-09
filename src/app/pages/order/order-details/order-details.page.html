@@ -12,7 +12,7 @@
 <ion-content class="ion-padding" *ngIf="currentOrder != undefined">
 
   <ion-card>
-    <ion-img src="https://ionicframework.com/dist/preview-app/www/assets/img/queen-live.png"></ion-img>
+    <ion-img src="{{ currentOrder.customer.image || 'assets/images/default/store.png' }}"></ion-img>
     <ion-card-header>
       <ion-card-title>{{currentOrder.customer.name}}</ion-card-title>
     </ion-card-header>
@@ -67,7 +67,7 @@
   <ion-list>
       <ion-item *ngFor="let item of currentOrder.order_items">
         <ion-thumbnail item-left>
-          <img src="assets/images/logos/abeja_izq.png">
+          <img src="assets/images/products/{{ item.presentation.image  || 'honey.png'}}">
         </ion-thumbnail>
         <ion-label>
           <h2 class="item-text-wrap"><b>{{ item.presentation.short_name}} ({{ item.presentation.measurement}})</b></h2>
