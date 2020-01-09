@@ -28,7 +28,7 @@ export class AppComponent {
     },
     {
       title: 'Clientes',
-      url: '/',
+      url: '/wholesaler-list',
       icon: 'contacts'
     },
     {

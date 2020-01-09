@@ -63,6 +63,18 @@ const routes: Routes = [
   { 
     path: 'stats-details', 
     loadChildren: './pages/stats/stats-details/stats-details.module#StatsDetailsPageModule' 
+  },
+  { 
+    path: 'wholesaler-details', 
+    loadChildren: './pages/wholesaler/wholesaler-details/wholesaler-details.module#WholesalerDetailsPageModule' 
+  },
+  { 
+    path: 'wholesaler-list', 
+    loadChildren: './pages/wholesaler/wholesaler-list/wholesaler-list.module#WholesalerListPageModule' 
+  },
+  { 
+    path: 'wholesaler-new', 
+    loadChildren: './pages/wholesaler/wholesaler-new/wholesaler-new.module#WholesalerNewPageModule' 
   }
 
 ];
