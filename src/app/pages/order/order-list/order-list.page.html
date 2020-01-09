@@ -35,7 +35,7 @@
               <p><ion-icon name="call" class="phone"></ion-icon><a href="tel:{{order.customer.phone}}">{{order.customer.phone}}</a></p>
               <p><ion-icon name="calendar" class="calendar"></ion-icon> {{order.created_at | date}}</p>
               <p><ion-icon name="car" class="delivery_date"></ion-icon> {{order.planned_delivery_date | date}}</p>
-              <p><ion-icon name="cash" class="cash"></ion-icon> $ {{order.totalPrice | number : fractionSize}}</p>
+              <p><ion-icon name="cash" class="cash"></ion-icon> $ {{order.total_wholesale_price | number : fractionSize}}</p>
             </ion-label>
           </ion-item>
           <ion-item-options side="end">

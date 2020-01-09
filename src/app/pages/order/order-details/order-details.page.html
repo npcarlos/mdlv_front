@@ -36,7 +36,7 @@
         <ion-icon name="car" class="delivery_date"></ion-icon> {{currentOrder.delivery_date | date}}
       </p>
       <p>
-        <ion-icon name="cash" class="cash"></ion-icon> $ {{currentOrder.totalPrice | number : fractionSize}}
+        <ion-icon name="cash" class="cash"></ion-icon> $ {{currentOrder.total_wholesale_price | number : fractionSize}}
       </p>
     </ion-card-content>
   </ion-card>
