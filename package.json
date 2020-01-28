@@ -1,7 +1,7 @@
 {
   "name": "mdlv",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Mieles de la Villa",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "compile2Android": "ionic build && npx cap sync && npx cap copy"
+    "compile2Android": "node ./bin/setNameDev.js && ionic build && npx cap sync && npx cap copy",
+    "compile2Android-prod": "node ./bin/setNameProd.js && ionic build --prod && npx cap sync && npx cap copy"
   },
   "private": true,
   "dependencies": {
@@ -21,15 +22,17 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
-    "@capacitor/android": "^1.2.1",
+    "@capacitor/android": "^1.4.0",
     "@capacitor/core": "1.2.0",
     "@ionic-native/core": "^5.14.0",
     "@ionic-native/splash-screen": "^5.14.0",
     "@ionic-native/status-bar": "^5.14.0",
     "@ionic/angular": "^4.11.1",
     "core-js": "^2.6.10",
+    "d3": "^5.15.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
+    "xml2js": "^0.4.23",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
