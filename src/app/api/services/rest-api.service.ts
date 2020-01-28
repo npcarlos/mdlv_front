@@ -3,15 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
+import { environment, SERVER_URL } from '../../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
-
-const apiUrl = "http://192.168.0.15/mdlv_back/public/api/";
-//const apiUrl = "http://vtry-on.com/mdlv-dev/public/api/";
-//const apiUrl = "http://localhost:8081/mdlv_test/public/api/";
 
 @Injectable({
   providedIn: 'root'
@@ -45,21 +41,21 @@ export class RestApiService {
   }
 
   public get(endpoint: string): Observable<any> {
-    console.log(">>>> "+apiUrl + endpoint);
-    return this.http.get(apiUrl + endpoint, httpOptions).pipe(
+    console.log(SERVER_URL + endpoint);
+    return this.http.get(SERVER_URL + endpoint, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
   // ===========================================================================================
   getById(endpoint: string, id: string): Observable<any> {
-    const url = apiUrl + endpoint + '${id}';
+    const url = SERVER_URL + endpoint + '${id}';
     return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   post(endpoint: string, data): Observable<any> {
-    const url = apiUrl + endpoint;
+    const url = SERVER_URL + endpoint;
     return this.http.post(url, data, httpOptions)
       .pipe(
       catchError(this.handleError)
@@ -68,7 +64,7 @@ export class RestApiService {
 
   update(endpoint: string, id: string, data): Observable<any> {
     //const url = '${apiUrl}/${endpoint}/${id}/edit';
-    const url = apiUrl + endpoint + "/" + id ;
+    const url = SERVER_URL + endpoint + "/" + id ;
     return this.http.put(url, data, httpOptions)
       .pipe(
       catchError(this.handleError)
@@ -85,6 +81,6 @@ export class RestApiService {
 
   getApiURL()
   {
-    return apiUrl;
+    return SERVER_URL;
   }
 }

@@ -11,11 +11,11 @@ export class PresentationFormComponent implements OnInit {
 
   @Input() limitMaximumWithAvailable: boolean;
   
-  private endPoint: string = "products";
+  endPoint: string = "products";
   
-  private products: any;
+  products: any;
 
-  private pedidos: any;
+  pedidos: any;
   
   
   constructor(

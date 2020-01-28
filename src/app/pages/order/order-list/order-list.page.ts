@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RestApiService } from 'src/app/api/services/rest-api.service';
 import { OrderService } from 'src/app/api/services/models/order.service';
 
 @Component({
@@ -11,15 +10,12 @@ import { OrderService } from 'src/app/api/services/models/order.service';
 export class OrderListPage implements OnInit {
 
 
-  private endPoint:string = "orders";
-
-  private orders: any;
-  private originalOrders: any;
+  orders: any;
+  originalOrders: any;
   
   constructor(
     private router: Router,
-    private orderService: OrderService,
-    public api: RestApiService
+    private orderService: OrderService
   ) { }
 
   ngOnInit()

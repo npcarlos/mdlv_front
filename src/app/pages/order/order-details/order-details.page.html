@@ -36,7 +36,7 @@
         <ion-icon name="car" class="delivery_date"></ion-icon> {{currentOrder.delivery_date | date}}
       </p>
       <p>
-        <ion-icon name="cash" class="cash"></ion-icon> $ {{currentOrder.total_wholesale_price | number : fractionSize}}
+        <ion-icon name="cash" class="cash"></ion-icon> $ {{currentOrder.total_wholesale_price | number }}
       </p>
     </ion-card-content>
   </ion-card>
@@ -72,10 +72,10 @@
         <ion-label>
           <h2 class="item-text-wrap"><b>{{ item.presentation.short_name}} ({{ item.presentation.measurement}})</b></h2>
           <p><b>Cantidad:</b> {{item.quantity}}</p>
-          <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price | number : fractionSize}}</p>
+          <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price | number }}</p>
           <p *ngIf="item.discount.uuid != '80863b44-9f07-4d4e-b1f5-64053052e5c7'"><b>Descuento:</b> {{ item.discount.discount_percentage }}% </p>
           
-          <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100) | number : fractionSize}}</p>
+          <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100) | number }}</p>
         </ion-label>
       </ion-item>
     </ion-list>

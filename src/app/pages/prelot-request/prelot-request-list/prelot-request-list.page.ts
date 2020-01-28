@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RestApiService } from 'src/app/api/services/rest-api.service';
 import { PrelotRequestService } from 'src/app/api/services/models/prelot-request.service';
 import { Router } from '@angular/router';
 
@@ -11,12 +10,9 @@ import { Router } from '@angular/router';
 })
 export class PrelotRequestListPage implements OnInit {
  
-  private endPoint:string = "prelot_requests";
-  
-  private prelotRequests: any;
+  prelotRequests: any;
 
   constructor(
-    public api: RestApiService,
     private router: Router,
     private prelotRequestService?: PrelotRequestService
   ) { }

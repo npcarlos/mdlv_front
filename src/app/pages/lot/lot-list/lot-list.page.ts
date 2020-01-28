@@ -11,11 +11,11 @@ export class LotListPage implements OnInit {
 
   private endPoint:string = "products";
 
-  private products: any;
+  products: any;
 
-  private prelotRequests: any;
+  prelotRequests: any;
 
-  private consultaAPI: string = "Nada";
+  consultaAPI: string = "Nada";
   
   constructor(
     public api: RestApiService,
@@ -83,5 +83,10 @@ export class LotListPage implements OnInit {
       agregarSolicitudEmpaque()
       {
         this.router.navigate(['/prelot-request-new']);
+      }
+
+      viewDetails(presentation)
+      {
+        this.router.navigate(['/lot-details', {presentation: JSON.stringify(presentation)}]);
       }
 }

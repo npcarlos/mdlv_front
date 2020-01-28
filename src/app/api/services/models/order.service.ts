@@ -114,14 +114,17 @@ export class OrderService {
           title: 'Corfirmar pago',
           message: "¿El pedido ya está pago?",
         });
-        let payment = "f1cc49f3-d32b-472e-a537-9eba6b2546ea";
+        // Pago Pendiente
+        let payment = "49049c00-95d0-4a6d-855b-199dbd8ee468";
         if( confirmPayment.value)
         {
-          payment = "8e98729e-1f3d-41a5-81b2-f0d7e95cb796";
+          // Pago exitoso
+          payment = "59e47cf3-bdc7-4f2a-83be-73db7e86646b";
         }
           var request = {
             deliverer_id: 1,
-            delivery_status_id: "f1879d6e-9ab4-4484-abba-f28f03e45627",
+            // Estado Entregado
+            delivery_status_id: "1aa3e917-d521-4ffe-b399-4fad101601a9",
             payment_status_id: payment
           };
           
@@ -136,4 +139,33 @@ export class OrderService {
     }
   }
 
+
+  
+  async enviarOrden(uuid, pedido, public_comments, private_comments) {
+    
+    var request = {
+      customer_id:uuid,
+      seller_id:1,
+      cart: pedido,
+      public_comments: public_comments,
+      private_comments: private_comments,
+     };
+     
+     console.log(JSON.stringify(request));
+     
+     return new Promise(resolve=>{
+        this.api.post("orders", request)
+          .subscribe(res => {
+            console.log(JSON.stringify(res));
+            if (res.success) {
+                resolve(res);
+            }
+            else {
+              console.log(res);
+            }
+          }, err => {
+            console.log(err);
+          });
+    });
+ }
 }

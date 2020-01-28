@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lot-details',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LotDetailsPage implements OnInit {
 
-  constructor() { }
+  presentation: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter()
+  {
+    let jsonData = this.activatedRoute.snapshot.paramMap.get('presentation');
+    this.presentation = JSON.parse(jsonData);
+    console.log(jsonData);
   }
 
 }

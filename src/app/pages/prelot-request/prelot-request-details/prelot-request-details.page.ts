@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RestApiService } from 'src/app/api/services/rest-api.service';
 import { PrelotRequestService } from 'src/app/api/services/models/prelot-request.service';
 
 import { Plugins } from '@capacitor/core';
@@ -16,11 +15,10 @@ const { Modals } = Plugins;
 export class PrelotRequestDetailsPage implements OnInit {
 
 
-  private prelotRequest:any;
+  prelotRequest:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    public api: RestApiService,
     public prelotRequestService: PrelotRequestService,
     private router: Router
   ) { }

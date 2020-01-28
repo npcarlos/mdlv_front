@@ -16,11 +16,11 @@ export class PrelotRequestNewPage implements OnInit {
   
   @ViewChild(PresentationFormComponent, {static: false}) presentationsForm: PresentationFormComponent;
 
-  private comments: string;
+  comments: string;
 
-  private fechaMinima: string;
+  fechaMinima: string;
 
-  private planned_packaging_date: string;
+  planned_packaging_date: string;
 
   constructor(
     public api: RestApiService,

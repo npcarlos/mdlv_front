@@ -24,3 +24,36 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+body
+{
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.whatsAppLink
+{
+    color: #25D366;
+    font-size: 2em;
+}
+
+.address
+{
+  color: #0345af;   
+}
+.cash
+{
+  color: #1caf02;
+}
+.phone
+{
+  color: #1caf02;
+}
+.calendar
+{
+    color: #8c00ff;
+}
+.delivery_date
+{
+    color: #b70401;
+}

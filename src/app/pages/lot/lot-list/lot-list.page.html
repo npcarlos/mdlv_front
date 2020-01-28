@@ -26,10 +26,10 @@
   <br>
   <ion-card *ngFor="let product of products">
     <div *ngIf="product.presentations.length > 0">
-      <ion-list-header color="light">
+        <ion-list-header color="light">
           <h2>{{product.name}} </h2>
         </ion-list-header>
-        <ion-item  *ngFor="let presentation of product.presentations">
+        <ion-item  *ngFor="let presentation of product.presentations" (click)="viewDetails(presentation)">
           <ion-avatar slot="start">
                 <img src="assets/images/products/{{ presentation.image  || 'honey.png'}}">
           </ion-avatar>

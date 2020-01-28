@@ -11,4 +11,30 @@
 
 <ion-content  class="ion-padding">
 
+  <ion-list>
+    <ion-item  *ngFor="let wholesaler of wholesalers" (click)="viewWholesalerDetails(wholesaler)">
+      <ion-thumbnail slot="start">
+        <img src="assets/images/{{ wholesaler.image  || 'default/store.png'}}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{wholesaler.name}}</h2>
+        <p>
+          <ion-icon name="pin" class="address"></ion-icon> {{wholesaler.address}}
+        </p>
+        
+        <p>
+          <ion-icon name="phone-portrait" class="phone"></ion-icon><a href="tel:{{wholesaler.cellphone}}">{{wholesaler.cellphone}}</a> - <a href="https://wa.me/573002069105?text=Me%20gustaría%20saber%20el%20precio%20del%20coche"><ion-icon name="logo-whatsapp" class="whatsAppLink"></ion-icon></a>
+        </p>
+        <p>
+          <ion-icon name="call" class="phone"></ion-icon><a href="tel:{{wholesaler.phone}}">{{wholesaler.phone}}</a>
+        </p>
+        
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button href="wholesaler-new" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

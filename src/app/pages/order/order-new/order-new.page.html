@@ -28,7 +28,7 @@
       monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dec"></ion-datetime>
   </ion-item>
   <ion-item>
-      <p>Total: $ {{presentationsForm.getTotalPrice() | number : fractionSize}}</p>
+      <p>Total: $ {{presentationsForm.getTotalPrice() | number }}</p>
   </ion-item>
   <app-presentation-form #presentationsForm limitMaximumWithAvailable="true">
   </app-presentation-form>

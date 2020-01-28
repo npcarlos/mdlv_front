@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RestApiService } from 'src/app/api/services/rest-api.service';
 import { OrderService } from 'src/app/api/services/models/order.service';
 import { Router } from '@angular/router';
 
@@ -15,18 +14,14 @@ const { Modals } = Plugins;
 })
 export class OrderDetailsPage implements OnInit {
 
+  currentOrder:any;
 
-  private endPoint:string = "orders";
-
-  private currentOrder:any;
-
-  private idOrder: any;
+  idOrder: any;
   
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
-    public api: RestApiService
   ) { }
 
   ngOnInit() {

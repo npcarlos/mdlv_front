@@ -14,3 +14,6 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+export const SERVER_URL = 'http://192.168.0.15/mdlv_back/public/api/';
+export const VERSION = 'Dev version';

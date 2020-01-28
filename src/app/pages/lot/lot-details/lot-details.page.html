@@ -1,9 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>lot-details</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="presentation == undefined">
+      Lotes
+    </ion-title>
+    <ion-title *ngIf="presentation != undefined">
+      Lotes de {{presentation.short_name}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" *ngIf="presentation != undefined">
 
+  <ion-card >
+    <img src="assets/images/products/{{ presentation.image  || 'honey.png'}}" />
+    <ion-card-header>
+      <ion-card-title>{{presentation.short_name}} ({{presentation.measurement}})</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h3><b>Cantidad disponible: {{presentation.available_quantity}}</b></h3>
+      <h3>Cantidad reservada: {{presentation.reserved_quantity}}</h3>
+      <h3>Cantidad total inventario: {{presentation.stock_quantity}}</h3>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Lotes disponibles</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <div *ngFor="let lot of presentation.lots" >
+          <ion-item *ngIf="lot.available_quantity > 0" >
+            <ion-label>
+              <p><b>Fecha de empaque:</b></p>
+              <p>  {{lot.production_date}}</p>
+              <p><b>Cantidad disponible:</b></p>
+              <p>   {{lot.available_quantity}}</p>
+            </ion-label>
+          </ion-item>
+        </div>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

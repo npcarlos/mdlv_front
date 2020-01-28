@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment, VERSION } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  version: string;
+  constructor(
 
+  ) {
+    this.version = "Ninguna";
+  }
+
+  ionViewDidEnter()
+  {
+    this.version = VERSION;
+  }
 }

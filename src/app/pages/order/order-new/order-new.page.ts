@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PresentationFormComponent } from '../../../shared/presentation-form/presentation-form.component'
 import { RestApiService } from 'src/app/api/services/rest-api.service';
+import { CustomerService } from 'src/app/api/services/models/customer.service';
+import { OrderService } from 'src/app/api/services/models/order.service';
 import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 
@@ -15,26 +17,28 @@ export class OrderNewPage implements OnInit {
  
   @ViewChild(PresentationFormComponent, {static: false}) presentationsForm: PresentationFormComponent;
 
-  private endPoint:string = "orders";
+  endPoint:string = "orders";
   
-  private customers: any;
+  customers: any;
   
-  private customer: any;
+  customer: any;
   
-  private resultado: any;
+  resultado: any;
 
-  private public_comments: string;
+  public_comments: string;
 
-  private private_comments: string;
+  private_comments: string;
   
-  private fechaMinima: string;
+  fechaMinima: string;
 
-  private planned_delivery_date: string;
+  planned_delivery_date: string;
 
   
   constructor(
     //private alertController: AlertController,
-    public api: RestApiService,
+    //public api: RestApiService,
+    public customerService: CustomerService,
+    public orderService: OrderService,
     private router: Router//,
     //public toastService: ToastService)
   )
@@ -52,51 +56,21 @@ export class OrderNewPage implements OnInit {
   }
 
   async getCustomers() {
-    
-     await this.api.get('customers')
-      .subscribe(res => {
-        console.log(res);
-        if(res.success)
-        {
-          this.customers = res.data;
-        }
-        else
-        {
-          console.log(res);
-        }
-        //loading.dismiss();
-      }, err => {
-        console.log(err);
-        //loading.dismiss();
-      });
+    this.customerService.getWholesalers().then(data =>
+      {
+        this.customers = data;
+      }
+    );
   }
 
   
   async enviarOrden(pedido) {
     
-    var request = {
-      customer_id:this.customer.uuid,
-      seller_id:1,
-      cart: pedido,
-      public_comments: this.public_comments,
-      private_comments: this.private_comments,
-     };
-     
-     console.log(JSON.stringify(request));
-     
-    
-    this.api.post("orders", request)
-      .subscribe(res => {
-        console.log(JSON.stringify(res));
-        if (res.success) {
-            this.router.navigate(['/order-list']);
-        }
-        else {
-          console.log(res);
-        }
-      }, err => {
-        console.log(err);
-      });
+    this.orderService.enviarOrden(this.customer.uuid, pedido, this.public_comments, this.public_comments).then(data =>
+      {
+        this.router.navigate(['/order-list']);
+      }
+    );
  }
   async crearOrden()
   {
