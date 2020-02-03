@@ -1,6 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\fnp\\Documents\\Proyectos\\FullBacano\\keysAndroidTemp.jks')
+            storePassword 'temporal'
+            keyAlias = 'key0'
+            keyPassword 'temporal'
+        }
+        release {
+            storeFile file('C:\\Users\\fnp\\Documents\\Proyectos\\FullBacano\\keysAndroidTemp.jks')
+            storePassword 'temporal'
+            keyAlias = 'key0'
+            keyPassword 'temporal'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.mdlv.mdlv"
@@ -9,18 +23,20 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [usesCleartextTraffic:false]
+        manifestPlaceholders = [usesCleartextTraffic:true]
     }
     buildTypes {
-        debug {
-            applicationIdSuffix ".dev"
-            versionNameSuffix "-dev"
-            manifestPlaceholders = [usesCleartextTraffic:true]
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [usesCleartextTraffic:true]
+        }
+
+        debug {
+            manifestPlaceholders = [usesCleartextTraffic:true]
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-demo"
+            debuggable true
         }
     }
 }
@@ -38,7 +54,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation project(':capacitor-android')
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':capacitor-cordova-android-plugins')

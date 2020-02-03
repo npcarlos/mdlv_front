@@ -28,10 +28,10 @@ export class RestApiService {
       // The response body may contain clues as to what went wrong,
       console.error(
         'Backend returned code ' + error.status +
-          ' \nbody was: ' + JSON.stringify(error.error));
+          ' \nbody was: ' + JSON.stringify(error.error)+ "\nERROR: "+JSON.stringify(error));
     }
     // return an observable with a user-facing error message
-    return throwError('Something bad happened; please try again later.');
+    return throwError('Something bad happened; please try again later.ERR_'+ "\nERROR: "+JSON.stringify(error));
   }
   
   // ===========================================================================================

@@ -1,6 +1,6 @@
 {
   "appId": "com.mdlv.mdlv",
-  "appName": "mdlv",
+  "appName": "Mieles de la Villa",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
@@ -10,5 +10,15 @@
   "sever" : {
     "iosScheme": "ionic",
     "androidScheme": "http"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#ffffffff",
+      "androidScaleType": "CENTER_CROP",
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small",
+      "spinnerColor": "#999999",
+      "showSpinner": true
+    }
   }
 }

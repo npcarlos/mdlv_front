@@ -8,7 +8,11 @@ fs.readFile(__dirname + '/../android/app/src/main/res/values/strings.xml', funct
     parser.parseString(data, function (err, result) {
         let strings = result.resources.string;
         strings.forEach(stringTag => {
-            if(stringTag["$"].name == "title_activity_main")
+            if(stringTag["$"].name == "app_name")
+            {
+                stringTag["_"] = "Mieles de la Villa";
+            }
+            else if(stringTag["$"].name == "title_activity_main")
             {
                 stringTag["_"] = "Mieles de la Villa";
             }
