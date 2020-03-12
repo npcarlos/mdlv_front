@@ -75,6 +75,10 @@ const routes: Routes = [
   { 
     path: 'wholesaler-new', 
     loadChildren: './pages/wholesaler/wholesaler-new/wholesaler-new.module#WholesalerNewPageModule' 
+  },
+  {
+    path: 'settings-index', 
+    loadChildren: './pages/settings/settings-index/settings-index.module#SettingsIndexPageModule' 
   }
 
 ];

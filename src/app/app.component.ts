@@ -50,6 +50,11 @@ export class AppComponent {
       title: 'Usuarios',
       url: '/',
       icon: 'people'
+    },
+    {
+      title: 'Configuración',
+      url: '/settings-index',
+      icon: 'settings'
     }
     
   ];
