@@ -14,9 +14,11 @@ const httpOptions = {
 })
 export class RestApiService {
 
+  urlServer:String;
+
   constructor(private http: HttpClient)
   {
-    
+    this.urlServer = SERVER_URL;  
   }
   
   private handleError(error: HttpErrorResponse) {
@@ -41,21 +43,21 @@ export class RestApiService {
   }
 
   public get(endpoint: string): Observable<any> {
-    console.log(SERVER_URL + endpoint);
-    return this.http.get(SERVER_URL + endpoint, httpOptions).pipe(
+    console.log(this.urlServer + endpoint);
+    return this.http.get(this.urlServer + endpoint, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
   // ===========================================================================================
   getById(endpoint: string, id: string): Observable<any> {
-    const url = SERVER_URL + endpoint + '${id}';
+    const url = this.urlServer + endpoint + '${id}';
     return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   post(endpoint: string, data): Observable<any> {
-    const url = SERVER_URL + endpoint;
+    const url = this.urlServer + endpoint;
     return this.http.post(url, data, httpOptions)
       .pipe(
       catchError(this.handleError)
@@ -64,7 +66,7 @@ export class RestApiService {
 
   update(endpoint: string, id: string, data): Observable<any> {
     //const url = '${apiUrl}/${endpoint}/${id}/edit';
-    const url = SERVER_URL + endpoint + "/" + id ;
+    const url = this.urlServer + endpoint + "/" + id ;
     return this.http.put(url, data, httpOptions)
       .pipe(
       catchError(this.handleError)
@@ -81,6 +83,11 @@ export class RestApiService {
 
   getApiURL()
   {
-    return SERVER_URL;
+    return this.urlServer;
+  }
+  setApiURL(newURL)
+  {
+    this.urlServer = newURL;
+    return this.urlServer;
   }
 }
