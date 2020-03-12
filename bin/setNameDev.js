@@ -29,4 +29,10 @@ fs.readFile(__dirname + '/../android/app/src/main/res/values/strings.xml', funct
     });
 });
 
+var m = JSON.parse(fs.readFileSync(__dirname + '/../android/app/google-services.json').toString());
+m.client[0].client_info.android_client_info.package_name = "com.mdlv.mdlv.debug";
+fs.writeFile(__dirname + '/../android/app/google-services.json', JSON.stringify(m, null, 4), function(errW, dataW){
+    console.log("archivo google-services.json generado");
+});
+
 console.log("Cambio de nombre realizado");
