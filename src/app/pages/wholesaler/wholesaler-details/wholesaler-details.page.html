@@ -37,16 +37,22 @@
     </ion-card-header>
     <ion-card-content>
       <p>
-        <b>Total órdenes:</b> {{wholesaler.orders.length}}
+        <b>Total órdenes:</b> {{wholesaler.aggregates.total_orders}}
       </p>
       <p>
-        <b>Total vendido:</b> $ {{ totalValue  | number }}
+        <b>Total vendido:</b> $ {{ wholesaler.aggregates.total_value  | number }}
       </p>
       <p>
-        <b>Promedio por orden:</b> $ {{ (totalValue / wholesaler.orders.length).toFixed() | number}}
+        <b>Promedio por orden:</b> $ {{ (wholesaler.aggregates.average_price).toFixed() | number}}
       </p>
       <p>
-        <b>Promedio días por orden:</b> {{ wholesaler.difference_days_between_orders | number}}
+        <b>Promedio días por orden:</b> {{ wholesaler.aggregates.difference_days_between_orders | number}}
+      </p>
+      <p>
+        <b>Días desde la última:</b> {{ wholesaler.aggregates.time_since_last_order }} días ({{ wholesaler.aggregates.time_since_last_order_humans }})
+      </p>
+      <p>
+        <b>Próxima orden:</b> En {{ (wholesaler.aggregates.time_for_next_order).toFixed() }} días ({{ wholesaler.aggregates.planned_time_for_next_order | date:'fullDate':'-0500':'es' }})
       </p>
     </ion-card-content>
   </ion-card>
@@ -55,7 +61,7 @@
       <ion-card-title>Productos</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-list *ngFor="let product of wholesaler.products; let indexProducto = index;">
+      <ion-list *ngFor="let product of wholesaler.aggregates.products; let indexProducto = index;">
 
         <div *ngIf="product.presentations.length > 0">
           <ion-list-header color="light">
@@ -69,8 +75,8 @@
             </ion-thumbnail>
             <ion-label class="labelItem">
               <p class="item-text-wrap">{{presentation.short_name}} ({{presentation.measurement}})</p>
-              <p class="item-text-wrap">{{presentation.quantity}} unidades</p>
-              <p class="item-text-wrap">{{(presentation.quantity / wholesaler.orders.length).toFixed(2) | number}} unidades/orden</p>
+              <p class="item-text-wrap">{{presentation.sold_quantity}} unidades</p>
+              <p class="item-text-wrap">{{(presentation.average_sold_quantity_per_order).toFixed(2) | number}} unidades/orden</p>
             </ion-label>
             
           </ion-item>
@@ -79,65 +85,5 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <!--
-  <ion-card>
-      <ion-card-header>
-        <ion-card-title><ion-icon name="chatbubbles" class="address"></ion-icon> Comentarios</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-          <h2><b>Públicos</b></h2>
-          <p>
-            {{currentOrder.public_comments}}
-          </p>
-          <h2><b>Privados</b></h2>
-          <p>
-            {{currentOrder.private_comments}}
-          </p>
-            
-      </ion-card-content>
-    </ion-card>
-
-  <ion-card>
-      <ion-card-header>
-        <ion-card-title>Productos</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-
-  <ion-list>
-      <ion-item *ngFor="let item of currentOrder.order_items">
-        <ion-thumbnail item-left>
-          <img src="assets/images/products/{{ item.presentation.image  || 'honey.png'}}">
-        </ion-thumbnail>
-        <ion-label>
-          <h2 class="item-text-wrap"><b>{{ item.presentation.short_name}} ({{ item.presentation.measurement}})</b></h2>
-          <p><b>Cantidad:</b> {{item.quantity}}</p>
-          <p><b>Valor unitario:</b> $ {{item.presentation.wholesale_price | number : fractionSize}}</p>
-          <p *ngIf="item.discount.uuid != '80863b44-9f07-4d4e-b1f5-64053052e5c7'"><b>Descuento:</b> {{ item.discount.discount_percentage }}% </p>
-          
-          <p><b>Subtotal:</b> $ {{ item.quantity * item.presentation.wholesale_price * ((100-item.discount.discount_percentage)/100) | number : fractionSize}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-card-content>
-</ion-card>
-<ion-list>
-    <ion-list-header>
-        <ion-label>Acciones</ion-label>
-      </ion-list-header>
-      <ion-button expand="full" color="success" (click)="marcarComoEntregado()">
-        <ion-icon name="checkmark-circle" size="large"></ion-icon> &nbsp; Entregar
-      </ion-button>
-      <ion-button expand="full" color="secondary" (click)="downloadReceipt()">
-        <ion-icon name="cloud-download" size="large"></ion-icon> &nbsp; Descargar recibo
-      </ion-button>
-      <ion-item-divider>
-          <ion-label>
-            Zona de peligro
-          </ion-label>
-        </ion-item-divider>
-      <ion-button expand="full" color="danger" (click)="eliminarOrden()">
-          <ion-icon name="trash" size="large"></ion-icon> &nbsp; Eliminar
-        </ion-button>
-</ion-list>
--->
+  
 </ion-content>

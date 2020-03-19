@@ -28,6 +28,10 @@
         <p>
           <ion-icon name="call" class="phone"></ion-icon><a href="tel:{{wholesaler.phone}}">{{wholesaler.phone}}</a>
         </p>
+        <br>
+        <p>
+          <b>Próxima orden:</b> En {{ (wholesaler.aggregates.time_for_next_order).toFixed(2) }} días <br>({{ wholesaler.aggregates.planned_time_for_next_order | date:'fullDate':'-0500':'es' }})
+        </p>
         
       </ion-label>
     </ion-item>
