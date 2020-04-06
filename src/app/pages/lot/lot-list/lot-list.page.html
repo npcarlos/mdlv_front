@@ -10,7 +10,16 @@
 </ion-header>
 
 <ion-content  class="ion-padding">
-  Inventario por producto y presentación
+  
+  <ion-card (click)="verPrediccionesSemanales()" *ngIf="prelotRequests != undefined && prelotRequests.length > 0">    
+    <ion-card-header color="light">
+        <ion-card-title>Predicciones para las siguientes semanas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        Se presentan las predicciones para las próximas 8 semanas
+    </ion-card-content>
+  </ion-card>
+
   <ion-card (click)="verSolicitudesEmpaque()" *ngIf="prelotRequests != undefined && prelotRequests.length > 0">    
     <ion-card-header color="light">
         <ion-card-title>Solicitudes de empaque</ion-card-title>
@@ -24,6 +33,7 @@
   </ion-card>
 
   <br>
+  <h1>Inventario por producto y presentación</h1>
   <ion-card *ngFor="let product of products">
     <div *ngIf="product.presentations.length > 0">
         <ion-list-header color="light">

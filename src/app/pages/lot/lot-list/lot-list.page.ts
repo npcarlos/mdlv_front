@@ -79,6 +79,11 @@ export class LotListPage implements OnInit {
         console.log("Ver solicitudes de empaque")
         this.router.navigate(['/prelot-request-list']);
       }
+
+      verPrediccionesSemanales()
+      {
+        this.router.navigate(['/product-forecast']);
+      }
       
       agregarSolicitudEmpaque()
       {

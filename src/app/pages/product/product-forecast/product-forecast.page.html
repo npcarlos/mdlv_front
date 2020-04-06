@@ -1,9 +1,86 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-forecast</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Pronóstico Semanal
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content  *ngIf="forecast == undefined || forecast.length == 0" class="ion-padding">
+    Actualmente no hay ninguna predicción disponible
+    
+</ion-content>
 
+<ion-content *ngIf="forecast != undefined && forecast.length > 0" class="ion-padding">
+  <div *ngFor="let weekForecast of forecast">
+    <h2 *ngIf="weekForecast.weeks_in_advance == 1">Predicciones para la próxima semana (N° {{weekForecast.requested_week}})</h2>
+    <h2 *ngIf="weekForecast.weeks_in_advance != 1">Predicciones para dentro de {{weekForecast.weeks_in_advance}} semanas (N° {{weekForecast.requested_week}})</h2>
+    <div *ngIf="weekForecast.products.length > 0">
+      <ion-card>
+        <ion-card-header color="light">
+          <ion-card-title>Posibles clientes</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ul>
+            <li *ngFor="let customer of weekForecast.possible_customers">{{ customer.name }}</li>
+          </ul>
+        </ion-card-content>
+      </ion-card>
+      <h4>Posibles productos</h4>
+      <ion-card *ngFor="let product of weekForecast.products">
+        <ion-card-header color="light">
+          <ion-card-title *ngIf="product.name == 'Miel'">{{ product.name }} ({{product.total_kegs | number}} cuñetes)</ion-card-title>
+          <ion-card-title *ngIf="product.name != 'Miel'">{{ product.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          
+            <ion-item  *ngFor="let presentation of product.presentations" >
+              <ion-avatar slot="start">
+                    <img src="assets/images/products/{{ presentation.image  || 'honey.png'}}">
+              </ion-avatar>
+              <ion-label>
+                <h2><b>{{presentation.short_name}} ({{presentation.measurement}})</b></h2>
+                <h3><b>Unidades:</b> {{presentation.posible_units_quantity | number}} unids.</h3>
+              </ion-label>
+            </ion-item>
+         
+            
+            <!--
+              
+            </ion-card>  
+          <p *ngIf="product.name == 'Miel'">   Número de cuñetes requeridos: {{product.total_kegs | number}}</p>
+          <ul>
+            <li *ngFor="let presentation of product.presentations"><b>{{presentation.short_name}} ({{presentation.measurement}}):</b>   {{presentation.posible_units_quantity | number}} unidades</li>
+          </ul>
+          -->
+        </ion-card-content>
+      </ion-card>
+      <br>
+      <br>
+      
+      <!--
+      <h3>Posibles clientes</h3>
+      <ion-card *ngFor="let customer of weekForecast.possible_customers">
+        <ion-card-header color="light">
+          <ion-card-title>{{ customer.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          
+        </ion-card-content>
+      </ion-card>
+      -->
+    </div>
+    <div *ngIf="weekForecast.products.length == 0">
+      <ion-card>
+        <ion-card-content>
+          No se pronostican ventas para esta semana
+        </ion-card-content>
+      </ion-card>
+      <br>
+      <br>
+    </div>
+  </div>
 </ion-content>
