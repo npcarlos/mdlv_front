@@ -15,6 +15,7 @@ export const environment = {
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
-//export const SERVER_URL = 'http://192.168.0.8/mdlv_back/public/api/';
-export const SERVER_URL = 'http://vtry-on.com/mdlv-dev/public/api/';
+export const SERVER_URL = 'http://192.168.0.15/mdlv_back/public/api/';
+//export const SERVER_URL = 'http://vtry-on.com/mdlv-dev/public/api/';
 export const VERSION = 'Dev version';
+export const PUSH_NOTIFICATION_PREFIX = "DEV_";

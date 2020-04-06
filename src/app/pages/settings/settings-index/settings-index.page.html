@@ -1,9 +1,58 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings-index</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Configuración
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Usuario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Usuario</ion-label>
+        <ion-select placeholder="Seleccione uno" (ionChange)="setCurrentUser($event)">
+          <ion-select-option  *ngFor="let user of users" value="{{user.uuid}}">{{user.name}} {{user.lastname}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Actual</ion-label>
+        <p *ngIf="currentUser != null">{{currentUser.name}}</p>
+        <p *ngIf="currentUser == null">Ninguno</p>
+      </ion-item>
+      <ion-item>
+        <ion-button expand="full" color="success" (click)="unsucribeAll()">
+          Cancelar Suscripciones
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Servidor</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Versión: {{version}}</p>
+      <div *ngIf="version == 'Dev version'">
+        <br>
+        ==============================
+        <br>
+        <ion-item>
+          <ion-label>IP:</ion-label><br>
+          <ion-input [(ngModel)]="urlServ"></ion-input><br>
+        </ion-item>
+        <ion-button expand="full" color="success" (click)="cambiarURL()">
+          Cambiar URL
+        </ion-button>
+        <p>URL:{{valorURL}}#</p>
+        
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

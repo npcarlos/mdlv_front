@@ -4,3 +4,4 @@ export const environment = {
 
 export const SERVER_URL = 'http://vtry-on.com/mdlv-dev/public/api/';
 export const VERSION = 'Release version';
+export const PUSH_NOTIFICATION_PREFIX = "";

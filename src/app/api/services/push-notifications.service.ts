@@ -1,13 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
-
-registerLocaleData(localeEs, 'es');
+import { environment, SERVER_URL, PUSH_NOTIFICATION_PREFIX } from '../../../environments/environment';
 
 import
 {
@@ -22,85 +15,26 @@ const { PushNotifications, Modals, Storage } = Plugins
 import { FCM } from "capacitor-fcm";
 const fcm = new FCM();
 
-@Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class AppComponent implements OnInit {
+export class PushNotificationsService {
 
-  userID: string;
-
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'Inventario',
-      url: '/lot-list',
-      icon: 'filing'
-    },
-    {
-      title: 'Pedidos',
-      url: '/order-list',
-      icon: 'cart'
-    },
-    {
-      title: 'Clientes',
-      url: '/wholesaler-list',
-      icon: 'contacts'
-    },
-    {
-      title: 'Insumos',
-      url: '/supply-list',
-      icon: 'nutrition'
-    },
-    {
-      title: 'Domicilios',
-      url: '/',
-      icon: 'car'
-    },
-    {
-      title: 'Estadísticas',
-      url: '/stats-list',
-      icon: 'stats'
-    },
-    {
-      title: 'Usuarios',
-      url: '/',
-      icon: 'people'
-    },
-    {
-      title: 'Configuración',
-      url: '/settings-index',
-      icon: 'settings'
-    }
-    
-  ];
-
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
-  ) {
-    this.initializeApp();
+  userToken: any;
+  constructor() { 
+    this.userToken = "Ninguno";
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-      this.userID = null;
-    });
-  }
-
-  ngOnInit()
+  setUserToken(newToken)
   {
-    console.log('Initializing HomePage');
-    this.initializePushNotifications();
+    this.userToken = newToken;
   }
+
+  getUserToken()
+  {
+    return this.userToken;
+  }
+
   
   initializePushNotifications()
   {
@@ -115,12 +49,12 @@ export class AppComponent implements OnInit {
       (token: PushNotificationToken) => {
         //alert('Push registration success, token: ' + token.value);
         console.log('Push registration success, token: ' + token.value);
-/*
+
         fcm
           .subscribeTo({ topic: "test" })
           .then(r => 
             {
-              //alert('subscribed to topic test')
+              alert('subscribed to topic test')
 
             }
             )
@@ -131,12 +65,11 @@ export class AppComponent implements OnInit {
         .subscribeTo({ topic: "dev" })
         .then(r =>
           {
-            //alert('subscribed to topic dev');
+            alert('subscribed to topic dev');
             console.log('subscribed to topic dev');
           }
            )
         .catch(err => console.log(err));
-      */
       }
     );
 
@@ -173,4 +106,38 @@ export class AppComponent implements OnInit {
     );
   }
 
+  suscribeToATopic(pTopic)
+  {
+    let topicName = PUSH_NOTIFICATION_PREFIX +  pTopic;
+    fcm
+      .subscribeTo({ topic: topicName })
+      .then(r => 
+        {
+          alert('subscribed to topic: '+ topicName)
+
+        }
+        )
+      .catch(err => 
+        {
+          console.log(err);
+        });
+  }
+
+  unsuscribeToATopic(pTopic)
+  {
+    let topicName = PUSH_NOTIFICATION_PREFIX + pTopic;
+    fcm
+      .unsubscribeFrom({ topic: topicName })
+      .then(r => 
+        {
+          alert('UNsubscribed to topic: '+ topicName)
+
+        }
+        )
+      .catch(err => 
+        {
+          console.log(err);
+          alert('ERROR UNsubscribed: '+ err);
+        });
+  }
 }
