@@ -79,6 +79,10 @@ const routes: Routes = [
   {
     path: 'settings-index', 
     loadChildren: './pages/settings/settings-index/settings-index.module#SettingsIndexPageModule' 
+  },
+  { 
+    path: 'product-forecast', 
+    loadChildren: './pages/product/product-forecast/product-forecast.module#ProductForecastPageModule' 
   }
 
 ];
