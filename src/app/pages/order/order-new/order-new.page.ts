@@ -33,6 +33,8 @@ export class OrderNewPage implements OnInit {
 
   planned_delivery_date: string;
 
+  creacionDeOrdenSolicitada: boolean;
+
   
   constructor(
     //private alertController: AlertController,
@@ -48,6 +50,7 @@ export class OrderNewPage implements OnInit {
 
   ngOnInit() {
     this.getCustomers();
+    this.creacionDeOrdenSolicitada = false;
   }
 
   ionViewDidEnter()
@@ -68,6 +71,7 @@ export class OrderNewPage implements OnInit {
     
     this.orderService.enviarOrden(this.customer.uuid, pedido, this.public_comments, this.public_comments).then(data =>
       {
+        this.creacionDeOrdenSolicitada = false;
         this.router.navigate(['/order-list']);
       }
     );
@@ -88,6 +92,12 @@ export class OrderNewPage implements OnInit {
     if(itemsPedidos.length == 0)
     {
       errores.push('Debe seleccionar al menos una presentación');
+      esValido = false;
+    }
+
+    if (this.creacionDeOrdenSolicitada == true)
+    {
+      errores.push('Ya hay una solicitud creándose');
       esValido = false;
     }
 
@@ -118,6 +128,7 @@ export class OrderNewPage implements OnInit {
       if( confirmRet.value)
       {
         console.log("enviar peticiión");
+        this.creacionDeOrdenSolicitada = true;
         this.enviarOrden(itemsPedidos);
       }
     }
