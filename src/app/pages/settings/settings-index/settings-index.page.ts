@@ -58,6 +58,20 @@ export class SettingsIndexPage implements OnInit {
     this.api.setApiURL(this.urlServ);
   }
 
+  cambiarServidorReal()
+  {
+    this.urlServ = "http://www.vtry-on.com/mdlv-dev/public/api/";
+    this.valorURL = this.urlServ;
+    this.api.setApiURL(this.urlServ);
+  }
+
+  cambiarServidorPruebas()
+  {
+    this.urlServ = SERVER_URL;
+    this.valorURL = this.urlServ;
+    this.api.setApiURL(this.urlServ);
+  }
+
   getCurrentUser()
   {
     
