@@ -17,7 +17,29 @@
         <ion-card-title>Mieles de la Villa App</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Descripción :) </p>
+        <p>App para el manejo de de toda la información de Mieles de la Villa</p>
+        <!--div *ngIf="version == 'Dev version'">
+          <br>
+          ==============================
+          <br>
+          <ion-item>
+            <ion-label>IP:</ion-label><br>
+            <ion-input [(ngModel)]="urlServ"></ion-input><br>
+          </ion-item>
+          <ion-button expand="full" color="success" (click)="cambiarURL()">
+            Cambiar URL
+          </ion-button>
+          <p>URL:{{valorURL}}#</p>
+          
+        </div>
+        <div>
+          
+          <app-maps-form #mapa>
+          </app-maps-form>
+          
+        </div-->
+        <ion-img src="../assets/images/fotos/mompos.jpg"></ion-img>
+
         <p>Versión: {{version}}</p>
       </ion-card-content>
     </ion-card>

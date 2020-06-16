@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
       icon: 'cart'
     },
     {
-      title: 'Clientes',
+      title: 'Distribuidores',
       url: '/wholesaler-list',
       icon: 'contacts'
     },

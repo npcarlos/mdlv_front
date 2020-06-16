@@ -64,4 +64,10 @@ export class OrderListPage implements OnInit {
       })
     });
   }
+
+  
+  viewWholesalerDetails(wholesaler)
+  {
+    this.router.navigate(['/wholesaler-details', {wholesaler: wholesaler.uuid}]);
+  }
 }

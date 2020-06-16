@@ -13,8 +13,8 @@
 
   <ion-card>
     <ion-img src="{{ currentOrder.customer.image || 'assets/images/default/store.png' }}"></ion-img>
-    <ion-card-header>
-      <ion-card-title>{{currentOrder.customer.name}}</ion-card-title>
+    <ion-card-header (click)="viewWholesalerDetails(currentOrder.customer)">
+      <ion-card-title>N°  - {{currentOrder.customer.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>

@@ -65,4 +65,10 @@ export class OrderDetailsPage implements OnInit {
       });
     }
   }
+
+  
+  viewWholesalerDetails(wholesaler)
+  {
+    this.router.navigate(['/wholesaler-details', {wholesaler: wholesaler.uuid}]);
+  }
 }
