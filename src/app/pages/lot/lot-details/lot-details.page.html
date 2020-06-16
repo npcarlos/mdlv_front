@@ -20,6 +20,9 @@
       <ion-card-title>{{presentation.short_name}} ({{presentation.measurement}})</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <h3>P.V.S.P: ${{presentation.retail_price | number}}</h3>
+      <h3>Precio a distribuidor: ${{presentation.wholesale_price | number}}</h3>
+      <br>
       <h3><b>Cantidad disponible: {{presentation.available_quantity}}</b></h3>
       <h3>Cantidad reservada: {{presentation.reserved_quantity}}</h3>
       <h3>Cantidad total inventario: {{presentation.stock_quantity}}</h3>
