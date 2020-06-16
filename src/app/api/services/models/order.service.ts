@@ -115,16 +115,16 @@ export class OrderService {
           message: "¿El pedido ya está pago?",
         });
         // Pago Pendiente
-        let payment = "49049c00-95d0-4a6d-855b-199dbd8ee468";
+        let payment = "7c74c187-a9e7-40ec-9edb-fb7a886b99c3";
         if( confirmPayment.value)
         {
           // Pago exitoso
-          payment = "59e47cf3-bdc7-4f2a-83be-73db7e86646b";
+          payment = "d7f72cc0-6dbe-4697-b3e5-1c3f4c46967a";
         }
           var request = {
             deliverer_id: 1,
             // Estado Entregado
-            delivery_status_id: "1aa3e917-d521-4ffe-b399-4fad101601a9",
+            delivery_status_id: "73494464-a2a6-4409-9438-6ea96843accd",
             payment_status_id: payment
           };
           
